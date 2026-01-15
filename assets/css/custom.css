@@ -1,0 +1,201 @@
+/* =========================
+   Darren Site Polish Overrides
+   Safe: loaded after main.css
+   ========================= */
+
+/* 1) Slightly tighter global typography + better readability */
+body {
+  letter-spacing: 0.2px;
+}
+
+p, li {
+  line-height: 1.75;
+}
+
+/* 2) Make section headers feel more "premium" */
+header.major h2 {
+  letter-spacing: 0.5px;
+}
+
+/* 3) Improve spacing between sections */
+#main > section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+/* 4) Cleaner card look for project/experience boxes */
+.box {
+  border-radius: 18px;
+  padding: 1.75rem;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.18);
+}
+
+/* 5) Make buttons pop a bit more */
+input[type="submit"].primary,
+input[type="reset"].primary,
+input[type="button"].primary,
+button.primary,
+.button.primary {
+  border-radius: 14px;
+  font-weight: 700;
+}
+
+/* 6) Softer corners on standard buttons too */
+.button {
+  border-radius: 14px;
+  font-weight: 650;
+}
+
+/* 7) Make the nav more readable (slightly larger, cleaner) */
+#nav a {
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+/* 8) Make your Hero feel sharper */
+#header.alt h1 {
+  letter-spacing: 0.6px;
+}
+
+#header.alt p {
+  opacity: 0.95;
+}
+
+/* 9) Improve icon alignment + spacing in skills */
+.features li p {
+  margin-top: 0.75rem;
+}
+
+/* 10) Make lists inside boxes nicer */
+.box ul {
+  margin-top: 0.75rem;
+}
+
+.box ul li {
+  margin-bottom: 0.45rem;
+}
+
+/* 11) Contact section spacing */
+#contact .actions {
+  margin-top: 1.25rem;
+}
+
+/* 12) Better footer spacing */
+#footer {
+  padding-top: 4rem;
+  padding-bottom: 3rem;
+}
+/* Initials badge in header */
+.header-divider {
+  display:block;
+  width:60px;
+  height:3px;
+  background: rgba(255,255,255,0.35);
+  border-radius:2px;
+}
+
+/* Hero headshot styling */
+.profile-pic{
+  border-radius: 22px;
+  box-shadow: 0 18px 55px rgba(0,0,0,0.28);
+  border: 1px solid rgba(255,255,255,0.16);
+}
+/* =========================
+   Projects: Modern cards + tech pills
+   ========================= */
+
+#projects .box{
+  position: relative;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  border-radius: 20px;
+}
+
+#projects .box:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 18px 55px rgba(0,0,0,0.26);
+}
+
+/* tighten headings inside project cards */
+#projects .box h3{
+  margin-bottom: 0.6rem;
+}
+
+/* consistent spacing in project cards */
+#projects .box p{
+  margin-top: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+/* pill row */
+.pill-row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.9rem;
+}
+
+.pill{
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+/* make project buttons consistent */
+#projects .actions .button{
+  border-radius: 14px;
+  font-weight: 700;
+}
+/* Sticky resume button (floating action button) */
+.resume-fab{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.9rem 1.05rem;
+  border-radius: 999px;
+
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.22);
+  box-shadow: 0 16px 45px rgba(0,0,0,0.30);
+  backdrop-filter: blur(10px);
+}
+
+.resume-fab:hover{
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+/* On very small screens, avoid covering content */
+@media (max-width: 480px){
+  .resume-fab{
+    right: 12px;
+    bottom: 12px;
+    padding: 0.8rem 0.95rem;
+    font-size: 0.92rem;
+  }
+}
+/* Skills icon polish */
+#skills .icon.major {
+  margin-bottom: 1rem;
+}
+
+#skills h3 {
+  margin-bottom: 0.6rem;
+}
+
