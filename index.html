@@ -1,436 +1,681 @@
 <!DOCTYPE HTML>
 <!--
-  Stellar by HTML5 UP
-  html5up.net | @ajlkn
-  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-  <head>
-    <title>Darren Dcunha | Data Scientist • ML/LLMs</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="description" content="Darren Dcunha — Data Scientist focused on analytics, forecasting, and LLM applications. Projects, experience, and contact." />
+	<head>
+		<title>Darren Dcunha | Data Scientist • ML/LLMs</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="Darren Dcunha — Data Scientist focused on analytics, forecasting, and LLM applications. Projects, experience, and contact." />
 
-    <!-- OpenGraph / Social Preview -->
-    <meta property="og:title" content="Darren Dcunha | Data Scientist • ML/LLMs" />
-    <meta property="og:description" content="Data Scientist focused on analytics, forecasting, and LLM applications. Projects, experience, and contact." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://darren16449.github.io/" />
-    <!-- Optional: add this file later for a better LinkedIn preview -->
-    <meta property="og:image" content="https://darren16449.github.io/images/og.png" />
-    <meta name="twitter:card" content="summary_large_image" />
+		<!-- OpenGraph / Social Preview -->
+		<meta property="og:title" content="Darren Dcunha | Data Scientist • ML/LLMs" />
+		<meta property="og:description" content="Data Scientist focused on analytics, forecasting, and LLM applications. Projects, experience, and contact." />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://darren16449.github.io/" />
+		<meta property="og:image" content="https://darren16449.github.io/images/og.png" />
+		<meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/custom.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-  </head>
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/custom.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-  <body class="is-preload">
-    <!-- Wrapper -->
-    <div id="wrapper">
+		<style>
+			/* ── Architecture Diagram ── */
+			.arch-diagram {
+				display: flex;
+				align-items: center;
+				flex-wrap: wrap;
+				gap: 0.4rem;
+				margin: 1rem 0 1.25rem;
+				font-size: 0.82rem;
+				font-weight: 600;
+			}
+			.arch-node {
+				background: rgba(255,255,255,0.10);
+				border: 1px solid rgba(255,255,255,0.22);
+				border-radius: 8px;
+				padding: 0.35rem 0.7rem;
+				white-space: nowrap;
+				letter-spacing: 0.2px;
+			}
+			.arch-arrow {
+				opacity: 0.55;
+				font-size: 1rem;
+			}
 
-      <!-- Header -->
-      <header id="header" class="alt">
-        <h1>Darren Dcunha</h1>
-        <p>
-          Data Scientist • Analytics • ML/LLMs<br />
-          Building forecasting, data products, and LLM apps with Python + SQL.
-        </p>
-      </header>
+			/* ── Skill tag badges ── */
+			.skill-group {
+				margin-bottom: 1.5rem;
+			}
+			.skill-group-label {
+				font-size: 0.75rem;
+				font-weight: 800;
+				letter-spacing: 1px;
+				text-transform: uppercase;
+				opacity: 0.6;
+				margin-bottom: 0.5rem;
+			}
+			.skill-tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.4rem;
+			}
+			.skill-tag {
+				display: inline-flex;
+				align-items: center;
+				padding: 0.3rem 0.7rem;
+				border-radius: 6px;
+				font-size: 0.8rem;
+				font-weight: 700;
+				background: rgba(255,255,255,0.09);
+				border: 1px solid rgba(255,255,255,0.16);
+				letter-spacing: 0.2px;
+			}
 
-      <!-- Nav -->
-      <nav id="nav">
-        <ul>
-          <li><a href="#intro" class="active">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+			/* ── Hero achievement banner ── */
+			.hero-achievement {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				background: rgba(255,255,255,0.10);
+				border: 1px solid rgba(255,255,255,0.2);
+				border-radius: 999px;
+				padding: 0.4rem 1rem;
+				font-size: 0.85rem;
+				font-weight: 700;
+				margin-bottom: 1.25rem;
+				letter-spacing: 0.2px;
+			}
+			.hero-achievement .dot {
+				width: 7px; height: 7px;
+				background: #5dde8c;
+				border-radius: 50%;
+				display: inline-block;
+				flex-shrink: 0;
+			}
 
-      <!-- Main -->
-      <div id="main">
+			/* ── Contact form ── */
+			.contact-form {
+				max-width: 560px;
+				margin: 1.5rem auto 0;
+				text-align: left;
+			}
+			.contact-form .field {
+				margin-bottom: 1rem;
+			}
+			.contact-form label {
+				display: block;
+				font-size: 0.8rem;
+				font-weight: 700;
+				letter-spacing: 0.5px;
+				text-transform: uppercase;
+				opacity: 0.7;
+				margin-bottom: 0.35rem;
+			}
+			.contact-form input,
+			.contact-form textarea {
+				width: 100%;
+				background: rgba(255,255,255,0.07);
+				border: 1px solid rgba(255,255,255,0.18);
+				border-radius: 10px;
+				padding: 0.65rem 0.9rem;
+				font-size: 0.9rem;
+				color: inherit;
+				outline: none;
+				transition: border-color 0.2s;
+				box-sizing: border-box;
+			}
+			.contact-form input:focus,
+			.contact-form textarea:focus {
+				border-color: rgba(255,255,255,0.45);
+			}
+			.contact-form textarea {
+				resize: vertical;
+				min-height: 110px;
+			}
+			.contact-form .form-row {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 0.75rem;
+			}
+			@media (max-width: 600px) {
+				.contact-form .form-row { grid-template-columns: 1fr; }
+			}
+			.contact-form .submit-row {
+				text-align: center;
+				margin-top: 1.25rem;
+			}
+			#form-status {
+				margin-top: 0.75rem;
+				font-size: 0.85rem;
+				font-weight: 600;
+				opacity: 0.85;
+				text-align: center;
+			}
 
-        <!-- About / Hero -->
-        <section id="intro" class="main">
-          <div class="spotlight">
-            <div class="content">
-              <header class="major">
-                <h2>Hi, I’m Darren 👋</h2>
-              </header>
+			/* ── Section divider ── */
+			.or-divider {
+				display: flex;
+				align-items: center;
+				gap: 0.75rem;
+				margin: 1.5rem auto;
+				max-width: 300px;
+				opacity: 0.4;
+				font-size: 0.8rem;
+				font-weight: 700;
+				letter-spacing: 1px;
+				text-transform: uppercase;
+			}
+			.or-divider::before,
+			.or-divider::after {
+				content: '';
+				flex: 1;
+				height: 1px;
+				background: currentColor;
+			}
 
-              <p>
-                I build systems that turn messy data into decisions — from reliable pipelines and reporting automation
-                to ML/LLM workflows that scale.
-              </p>
+			/* ── Color fix: keep hero/all sections in purple, not drifting pink ── */
+			#wrapper { background: #3d3068; }
+			#header { background: #3d3068; }
 
-              <p>
-                Recent work includes an LLM-based synthetic financial time-series generator with automated statistical validation,
-                and a RAG-powered marketing content assistant that produces multilingual, tone-controlled outputs.
-              </p>
+			/* ── Project 3 pill row ── */
+			#projects .box h3 + .pill-row { margin-top: 0.3rem; }
+		</style>
+	</head>
+	<body class="is-preload">
 
-              <!-- Open-to strip -->
-              <p style="margin-top: 0.75rem;">
-                <strong>Open to:</strong> Data Scientist • ML Engineer • Data Analyst • Data Engineer<br />
-                <strong>Focus:</strong> LLM apps/RAG • Forecasting • Reporting automation • ETL pipelines
-              </p>
+		<!-- Wrapper -->
+		<div id="wrapper">
 
-              <ul class="actions">
-                <li><a href="#projects" class="button primary">View Projects</a></li>
-                <li><a href="assets/Darren_Dcunha_Resume.pdf" class="button" target="_blank" rel="noreferrer">Download Resume</a></li>
-              </ul>
+			<!-- Header -->
+			<header id="header" class="alt">
+				<h1>Darren Dcunha</h1>
+				<p>
+					Data Scientist • Analytics • ML/LLMs<br />
+					Building forecasting, data products, and LLM apps with Python + SQL.
+				</p>
+			</header>
 
-              <p style="margin-top: 0.75rem;">
-                <a href="https://www.linkedin.com/in/darrenandrewdcunha" target="_blank" rel="noreferrer">LinkedIn</a>
-                &nbsp;•&nbsp;
-                <a href="https://github.com/darren16449" target="_blank" rel="noreferrer">GitHub</a>
-                &nbsp;•&nbsp;
-                <a href="mailto:darrenandrew01@gmail.com">darrenandrew01 [at] gmail [dot] com</a>
-              </p>
-            </div>
+			<!-- Nav -->
+			<nav id="nav">
+				<ul>
+					<li><a href="#intro" class="active">About</a></li>
+					<li><a href="#skills">Skills</a></li>
+					<li><a href="#projects">Projects</a></li>
+					<li><a href="#experience">Experience</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+			</nav>
 
-            <!-- Optional: Replace with your own photo later -->
-            <span class="image">
-              <img src="images/headshot.jpg" alt="Darren Dcunha headshot" class="profile-pic" />
-            </span>
+			<!-- Main -->
+			<div id="main">
 
-          </div>
-        </section>
+				<!-- About / Hero -->
+				<section id="intro" class="main">
+					<div class="spotlight">
+						<div class="content">
+							<header class="major">
+								<h2>Hi, I'm Darren 👋</h2>
+							</header>
 
-        <!-- Skills -->
-        <section id="skills" class="main special">
-          <header class="major">
-            <h2>Skills</h2>
-            <p>Technical capabilities aligned with data engineering, AI systems, and automation.</p>
-          </header>
+							<!-- Achievement banner -->
+							<p>
+								<span class="hero-achievement">
+									<span class="dot"></span>
+									Cut manual reporting effort by 40% · Automated pipelines across 3 roles
+								</span>
+							</p>
 
-          <ul class="features">
-            <li>
-              <span class="icon solid major style1 fa-database"></span>
-              <h3>Data Engineering & Architecture</h3>
-              <p>
-                Data pipelines, ETL/ELT, data modeling, schema design, data validation,
-                pipeline automation, workflow orchestration
-              </p>
-            </li>
+							<p>
+								I build systems that turn messy data into decisions — from reliable pipelines and reporting automation to ML/LLM workflows that scale.
+							</p>
+							<p>
+								Recent work includes an LLM-based synthetic financial time-series generator with automated statistical validation, and a RAG-powered marketing content assistant that produces multilingual, tone-controlled outputs.
+							</p>
 
-            <li>
-              <span class="icon solid major style3 fa-brain"></span>
-              <h3>AI / Machine Learning</h3>
-              <p>
-                Machine learning, NLP, LLMs, RAG, prompt engineering,
-                feature engineering, model evaluation, time series analysis
-              </p>
-            </li>
+							<!-- Open-to strip -->
+							<p style="margin-top: 0.75rem;">
+								<strong>Open to:</strong> Data Scientist • ML Engineer • Data Analyst • Data Engineer<br />
+								<strong>Focus:</strong> LLM apps/RAG • Forecasting • Reporting automation • ETL pipelines
+							</p>
 
-            <li>
-              <span class="icon solid major style5 fa-chart-line"></span>
-              <h3>Analytics & Visualization</h3>
-              <p>
-                Python, SQL, Pandas, NumPy, Power BI, Tableau,
-                KPI development, trend analysis, executive dashboards
-              </p>
-            </li>
+							<ul class="actions">
+								<li><a href="#projects" class="button primary">View Projects</a></li>
+								<li><a href="assets/Darren_Dcunha_Resume.pdf" class="button" target="_blank" rel="noreferrer">Download Resume</a></li>
+							</ul>
 
-            <li>
-              <span class="icon solid major style2 fa-cogs"></span>
-              <h3>Tools & Workflow</h3>
-              <p>
-                OpenAI API, ChromaDB, Hugging Face, Git,
-                Agile/Scrum, SDLC, UAT, documentation, stakeholder communication
-              </p>
-            </li>
-          </ul>
-        </section>
+							<p style="margin-top: 0.75rem;">
+								<a href="https://www.linkedin.com/in/darrenandrewdcunha" target="_blank" rel="noreferrer">LinkedIn</a>
+								&nbsp;•&nbsp;
+								<a href="https://github.com/darren16449" target="_blank" rel="noreferrer">GitHub</a>
+								&nbsp;•&nbsp;
+								<a href="mailto:darrenandrew01@gmail.com">darrenandrew01@gmail.com</a>
+							</p>
+						</div>
+						<span class="image">
+							<img src="images/headshot.jpg" alt="Darren Dcunha headshot" class="profile-pic" />
+						</span>
+					</div>
+				</section>
 
-        <!-- Projects -->
-        <section id="projects" class="main special">
-          <header class="major">
-            <h2>Featured Projects</h2>
-            <p>Selected projects demonstrating AI systems, data pipelines, and automation.</p>
-          </header>
+				<!-- Skills -->
+				<section id="skills" class="main special">
+					<header class="major">
+						<h2>Skills</h2>
+						<p>Technical capabilities aligned with data engineering, AI systems, and automation.</p>
+					</header>
 
-          <div style="text-align:left; max-width: 900px; margin: 0 auto;">
+					<div style="max-width:860px; margin:0 auto; text-align:left;">
 
-            <!-- Project 1 -->
-            <section class="box">
-              <header class="major" style="margin-bottom: 0.75rem;">
-                <h3 style="margin-bottom: 0.25rem;">
-                  FinSynGen — LLM-Based Synthetic Financial Time-Series Generator
-                </h3>
+						<div class="skill-group">
+							<div class="skill-group-label">Languages & Querying</div>
+							<div class="skill-tags">
+								<span class="skill-tag">Python</span>
+								<span class="skill-tag">SQL</span>
+								<span class="skill-tag">Pandas</span>
+								<span class="skill-tag">NumPy</span>
+								<span class="skill-tag">Bash</span>
+							</div>
+						</div>
 
-                <div class="pill-row" style="margin: 0.25rem 0 0;">
-                  <span class="pill">Python</span>
-                  <span class="pill">OpenAI</span>
-                  <span class="pill">Time Series</span>
-                  <span class="pill">Validation</span>
-                </div>
-              </header>
+						<div class="skill-group">
+							<div class="skill-group-label">AI / ML / LLMs</div>
+							<div class="skill-tags">
+								<span class="skill-tag">LLMs</span>
+								<span class="skill-tag">RAG</span>
+								<span class="skill-tag">Prompt Engineering</span>
+								<span class="skill-tag">OpenAI API</span>
+								<span class="skill-tag">ChromaDB</span>
+								<span class="skill-tag">Hugging Face</span>
+								<span class="skill-tag">NLP</span>
+								<span class="skill-tag">Time Series</span>
+								<span class="skill-tag">Feature Engineering</span>
+							</div>
+						</div>
 
-              <!-- Case Study Format -->
-              <p><strong>Problem:</strong> Real market data can be insufficient for stress testing and simulation of rare/extreme scenarios.</p>
-              <p><strong>Approach:</strong> Generate synthetic log-return series using LLM prompting, then automatically validate realism with statistical checks.</p>
-              <p><strong>Architecture:</strong> Prompt Engineering → LLM Generation → Statistical Validation → Automated Regeneration → Exportable Dataset</p>
-              <p><strong>Validation:</strong> KS tests, distribution checks, histograms, and quality filtering to reject and regenerate weak samples.</p>
-              <p><strong>Impact:</strong> Enables risk simulation and scenario testing when historical datasets are limited or incomplete.</p>
+						<div class="skill-group">
+							<div class="skill-group-label">Data Engineering</div>
+							<div class="skill-tags">
+								<span class="skill-tag">ETL / ELT Pipelines</span>
+								<span class="skill-tag">Data Modeling</span>
+								<span class="skill-tag">Schema Design</span>
+								<span class="skill-tag">Pipeline Automation</span>
+								<span class="skill-tag">Data Validation</span>
+								<span class="skill-tag">Workflow Orchestration</span>
+							</div>
+						</div>
 
-              <p style="margin-top: 0.75rem;"><strong>Demonstrates:</strong> Statistical evaluation (DS), pipeline automation (DE), LLM workflow design (ML).</p>
+						<div class="skill-group">
+							<div class="skill-group-label">Analytics & Visualization</div>
+							<div class="skill-tags">
+								<span class="skill-tag">Power BI</span>
+								<span class="skill-tag">Tableau</span>
+								<span class="skill-tag">KPI Development</span>
+								<span class="skill-tag">Executive Dashboards</span>
+								<span class="skill-tag">Trend Analysis</span>
+							</div>
+						</div>
 
-              <ul class="actions" style="margin-top: 0.75rem;">
-                <li>
-                  <a class="button"
-                     href="https://github.com/darren16449/-FinSynGen-Synthetic-Financial-Data-Generator"
-                     target="_blank" rel="noreferrer">
-                    View on GitHub
-                  </a>
-                </li>
-              </ul>
-            </section>
+						<div class="skill-group">
+							<div class="skill-group-label">Tools & Process</div>
+							<div class="skill-tags">
+								<span class="skill-tag">Git</span>
+								<span class="skill-tag">Agile / Scrum</span>
+								<span class="skill-tag">SDLC</span>
+								<span class="skill-tag">UAT</span>
+								<span class="skill-tag">Streamlit</span>
+								<span class="skill-tag">Google Workspace</span>
+								<span class="skill-tag">Stakeholder Communication</span>
+							</div>
+						</div>
 
-            <!-- Project 2 -->
-            <section class="box">
-              <header class="major" style="margin-bottom: 0.75rem;">
-                <h3 style="margin-bottom: 0.25rem;">
-                  Marketing Content Assistant — LLM + RAG Application
-                </h3>
+					</div>
+				</section>
 
-                <div class="pill-row" style="margin: 0.25rem 0 0;">
-                  <span class="pill">OpenAI</span>
-                  <span class="pill">RAG</span>
-                  <span class="pill">ChromaDB</span>
-                  <span class="pill">Streamlit</span>
-                </div>
-              </header>
+				<!-- Projects -->
+				<section id="projects" class="main special">
+					<header class="major">
+						<h2>Featured Projects</h2>
+						<p>Selected projects demonstrating AI systems, data pipelines, and automation.</p>
+					</header>
 
-              <!-- Case Study Format -->
-              <p><strong>Problem:</strong> Marketing content needs speed, consistency, and brand control — but generic LLM outputs can drift or hallucinate.</p>
-              <p><strong>Approach:</strong> Use Retrieval-Augmented Generation to ground outputs in relevant context and generate controlled, multi-format content.</p>
-              <p><strong>Architecture:</strong> User Input → Embedding Search (ChromaDB) → Context Injection → GPT Generation → Structured Output</p>
-              <p><strong>Validation:</strong> Prompt templates + format/tone controls to reduce drift, keep outputs consistent, and support multilingual generation.</p>
-              <p><strong>Impact:</strong> Produces grounded, reusable marketing copy with controllable tone, format, and keyword guidance.</p>
+					<div style="text-align:left; max-width: 900px; margin: 0 auto;">
 
-              <p style="margin-top: 0.75rem;"><strong>Demonstrates:</strong> RAG implementation (ML), vector search systems (DE), structured outputs (Analytics).</p>
+						<!-- Project 1 -->
+						<section class="box">
+							<header class="major" style="margin-bottom: 0.75rem;">
+								<h3 style="margin-bottom: 0.25rem;">
+									FinSynGen — LLM-Based Synthetic Financial Time-Series Generator
+								</h3>
+								<div class="pill-row" style="margin: 0.25rem 0 0;">
+									<span class="pill">Python</span>
+									<span class="pill">OpenAI</span>
+									<span class="pill">Time Series</span>
+									<span class="pill">Statistical Validation</span>
+								</div>
+							</header>
 
-              <ul class="actions" style="margin-top: 0.75rem;">
-                <li>
-                  <a class="button"
-                     href="https://github.com/darren16449/Marketing-Content-Assistant"
-                     target="_blank" rel="noreferrer">
-                    View on GitHub
-                  </a>
-                </li>
-              </ul>
-            </section>
+							<p><strong>Problem:</strong> Real market data can be insufficient for stress testing and simulation of rare or extreme scenarios.</p>
+							<p><strong>Approach:</strong> Generate synthetic log-return series using LLM prompting, then automatically validate realism with statistical checks — rejecting and regenerating weak samples.</p>
 
-            <!-- Project 3 -->
-            <section class="box">
-              <header class="major" style="margin-bottom: 0.75rem;">
-                <h3 style="margin-bottom: 0.25rem;">
-                  Automated Financial & Operational Reporting Pipelines
-                </h3>
-                <p style="margin: 0;">Python • SQL • Automation • Analytics</p>
-              </header>
+							<!-- Architecture diagram -->
+							<div class="arch-diagram">
+								<span class="arch-node">Prompt Engineering</span>
+								<span class="arch-arrow">→</span>
+								<span class="arch-node">LLM Generation</span>
+								<span class="arch-arrow">→</span>
+								<span class="arch-node">KS / Distribution Tests</span>
+								<span class="arch-arrow">→</span>
+								<span class="arch-node">Auto-Regeneration</span>
+								<span class="arch-arrow">→</span>
+								<span class="arch-node">Exportable Dataset</span>
+							</div>
 
-              <p><strong>Problem:</strong> Manual financial/ops reporting is slow, error-prone, and difficult to audit.</p>
-              <p><strong>Approach:</strong> Replace repetitive workflows with automated extraction, validation, transformation, and standardized outputs.</p>
-              <p><strong>Impact:</strong> Reduced manual reporting effort by up to <strong>40%</strong> and improved auditability and turnaround time.</p>
+							<p><strong>Impact:</strong> Enables risk simulation and scenario testing when historical datasets are limited or incomplete — no manual data collection required.</p>
+							<p style="margin-top: 0.75rem;"><strong>Demonstrates:</strong> Statistical evaluation (DS), pipeline automation (DE), LLM workflow design (ML).</p>
 
-              <ul>
-                <li>Automated data extraction, validation, and transformation workflows</li>
-                <li>Standardized outputs for cross-functional stakeholders</li>
-                <li>Improved accuracy, traceability, and reporting consistency</li>
-              </ul>
+							<ul class="actions" style="margin-top: 0.75rem;">
+								<li>
+									<a class="button" href="https://github.com/darren16449/-FinSynGen-Synthetic-Financial-Data-Generator" target="_blank" rel="noreferrer">
+										View on GitHub
+									</a>
+								</li>
+							</ul>
+						</section>
 
-              <ul class="actions">
-                <li>
-                  <a class="button"
-                     href="assets/Darren_Dcunha_Resume.pdf"
-                     target="_blank" rel="noreferrer">
-                    See Related Experience
-                  </a>
-                </li>
-              </ul>
-            </section>
+						<!-- Project 2 -->
+						<section class="box">
+							<header class="major" style="margin-bottom: 0.75rem;">
+								<h3 style="margin-bottom: 0.25rem;">
+									Marketing Content Assistant — LLM + RAG Application
+								</h3>
+								<div class="pill-row" style="margin: 0.25rem 0 0;">
+									<span class="pill">OpenAI</span>
+									<span class="pill">RAG</span>
+									<span class="pill">ChromaDB</span>
+									<span class="pill">Streamlit</span>
+								</div>
+							</header>
 
-          </div>
+							<p><strong>Problem:</strong> Marketing content needs speed, consistency, and brand control — but generic LLM outputs drift and hallucinate without grounding.</p>
+							<p><strong>Approach:</strong> Retrieval-Augmented Generation grounds every output in relevant context, with prompt templates enforcing tone and format controls for multilingual generation.</p>
 
-          <footer class="major">
-            <ul class="actions special">
-              <li>
-                <a href="https://github.com/darren16449"
-                   class="button primary"
-                   target="_blank" rel="noreferrer">
-                  View All Projects on GitHub
-                </a>
-              </li>
-            </ul>
-          </footer>
-        </section>
+							<!-- Architecture diagram -->
+							<div class="arch-diagram">
+								<span class="arch-node">User Input</span>
+								<span class="arch-arrow">→</span>
+								<span class="arch-node">Embedding Search (ChromaDB)</span>
+								<span class="arch-arrow">→</span>
+								<span class="arch-node">Context Injection</span>
+								<span class="arch-arrow">→</span>
+								<span class="arch-node">GPT Generation</span>
+								<span class="arch-arrow">→</span>
+								<span class="arch-node">Structured Output</span>
+							</div>
 
-        <!-- Experience -->
-        <section id="experience" class="main special">
-          <header class="major">
-            <h2>Experience</h2>
-            <p>Building automation-first systems across finance, analytics, and operations.</p>
-          </header>
+							<p><strong>Impact:</strong> Produces grounded, reusable marketing copy with controllable tone, format, and keyword guidance — reducing content drift significantly.</p>
+							<p style="margin-top: 0.75rem;"><strong>Demonstrates:</strong> RAG implementation (ML), vector search systems (DE), structured outputs (Analytics).</p>
 
-          <div style="text-align:left; max-width: 900px; margin: 0 auto;">
+							<ul class="actions" style="margin-top: 0.75rem;">
+								<li>
+									<a class="button" href="https://github.com/darren16449/Marketing-Content-Assistant" target="_blank" rel="noreferrer">
+										View on GitHub
+									</a>
+								</li>
+							</ul>
+						</section>
 
-            <!-- UMBC -->
-            <section class="box">
-              <h3 style="margin-bottom: 0.25rem;">
-                Graduate Assistant — Division of Professional Studies, UMBC
-              </h3>
-              <p style="margin-top:0; opacity:0.85;">
-                Baltimore, MD · Jul 2024 – Dec 2025
-              </p>
+						<!-- Project 3 -->
+						<section class="box">
+							<header class="major" style="margin-bottom: 0.75rem;">
+								<h3 style="margin-bottom: 0.25rem;">
+									Automated Financial & Operational Reporting Pipelines
+								</h3>
+								<div class="pill-row" style="margin: 0.25rem 0 0;">
+									<span class="pill">Python</span>
+									<span class="pill">SQL</span>
+									<span class="pill">Automation</span>
+									<span class="pill">Analytics</span>
+								</div>
+							</header>
 
-              <ul>
-                <li>
-                  Designed and automated financial and payroll reporting workflows using
-                  <strong>Python and Excel</strong>, reducing manual effort by <strong>40%</strong>
-                  while improving data accuracy.
-                </li>
-                <li>
-                  Structured document and data organization across Google Workspace and Adobe,
-                  improving audit readiness and information retrieval speed.
-                </li>
-                <li>
-                  Coordinated payroll and deposit workflows for a multi-person team,
-                  reducing processing time by <strong>30%</strong> and minimizing operational friction.
-                </li>
-              </ul>
-            </section>
+							<p><strong>Problem:</strong> Manual financial and ops reporting is slow, error-prone, and difficult to audit — especially across multi-person teams.</p>
+							<p><strong>Approach:</strong> Replace repetitive workflows with automated extraction, validation, transformation, and standardized outputs.</p>
 
-            <!-- BizViz -->
-            <section class="box">
-              <h3 style="margin-bottom: 0.25rem;">
-                Data Analyst Intern — BizViz Technologies
-              </h3>
-              <p style="margin-top:0; opacity:0.85;">
-                Bengaluru, India · Jan 2023 – Apr 2023
-              </p>
+							<!-- Architecture diagram -->
+							<div class="arch-diagram">
+								<span class="arch-node">Raw Data Sources</span>
+								<span class="arch-arrow">→</span>
+								<span class="arch-node">Python Extraction</span>
+								<span class="arch-arrow">→</span>
+								<span class="arch-node">SQL Validation</span>
+								<span class="arch-arrow">→</span>
+								<span class="arch-node">Transformation</span>
+								<span class="arch-arrow">→</span>
+								<span class="arch-node">Standardized Reports</span>
+							</div>
 
-              <ul>
-                <li>
-                  Analyzed large-scale energy consumption datasets using <strong>Python and SQL</strong>
-                  to identify trends, anomalies, and optimization opportunities for enterprise clients.
-                </li>
-                <li>
-                  Built analytical reports and dashboards to visualize energy usage patterns,
-                  improving performance visibility and data-driven decision-making.
-                </li>
-                <li>
-                  Developed and validated SQL queries and Python scripts to ensure data quality
-                  and platform reliability across client environments.
-                </li>
-              </ul>
-            </section>
+							<p><strong>Impact:</strong> Reduced manual reporting effort by <strong>40%</strong>, cut processing time by <strong>30%</strong>, and improved auditability and turnaround time across stakeholders.</p>
 
-            <!-- SEG Automotive -->
-            <section class="box">
-              <h3 style="margin-bottom: 0.25rem;">
-                IT Intern — SEG Automotive
-              </h3>
-              <p style="margin-top:0; opacity:0.85;">
-                Bengaluru, India · Aug 2022 – Sep 2022
-              </p>
+							<ul>
+								<li>Automated data extraction, validation, and transformation workflows</li>
+								<li>Standardized outputs for cross-functional stakeholders</li>
+								<li>Improved accuracy, traceability, and reporting consistency</li>
+							</ul>
 
-              <ul>
-                <li>
-                  Built <strong>Power BI</strong> dashboards to monitor production-line KPIs,
-                  enabling near real-time visibility for plant managers.
-                </li>
-                <li>
-                  Automated data extraction and transformation from manufacturing systems,
-                  reducing reporting turnaround time and standardizing KPI reporting.
-                </li>
-                <li>
-                  Performed exploratory data analysis to identify process bottlenecks,
-                  contributing to measurable productivity improvements.
-                </li>
-              </ul>
-            </section>
+							<ul class="actions">
+								<li>
+									<a class="button" href="assets/Darren_Dcunha_Resume.pdf" target="_blank" rel="noreferrer">
+										See Related Experience
+									</a>
+								</li>
+							</ul>
+						</section>
 
-          </div>
+					</div>
 
-          <footer class="major">
-            <ul class="actions special">
-              <li>
-                <a href="assets/Darren_Dcunha_Resume.pdf"
-                   class="button"
-                   target="_blank" rel="noreferrer">
-                  View Full Resume
-                </a>
-              </li>
-            </ul>
-          </footer>
-        </section>
+					<footer class="major">
+						<ul class="actions special">
+							<li>
+								<a href="https://github.com/darren16449" class="button primary" target="_blank" rel="noreferrer">
+									View All Projects on GitHub
+								</a>
+							</li>
+						</ul>
+					</footer>
+				</section>
 
-        <!-- Contact -->
-        <section id="contact" class="main special">
-          <header class="major">
-            <h2>Contact</h2>
-            <p>
-              Open to full-time and internship opportunities in
-              Data Science, AI Systems, and Analytics.
-            </p>
-          </header>
+				<!-- Experience -->
+				<section id="experience" class="main special">
+					<header class="major">
+						<h2>Experience</h2>
+						<p>Building automation-first systems across finance, analytics, and operations.</p>
+					</header>
 
-          <ul class="actions special">
-            <li>
-              <a href="mailto:darrenandrew01@gmail.com" class="button primary">
-                Email Me
-              </a>
-            </li>
-            <li>
-              <a href="assets/Darren_Dcunha_Resume.pdf"
-                 class="button"
-                 target="_blank" rel="noreferrer">
-                Download Resume
-              </a>
-            </li>
-          </ul>
+					<div style="text-align:left; max-width: 900px; margin: 0 auto;">
 
-          <p style="margin-top: 1.5rem;">
-            <a href="https://www.linkedin.com/in/darrenandrewdcunha"
-               target="_blank" rel="noreferrer">LinkedIn</a>
-            &nbsp;•&nbsp;
-            <a href="https://github.com/darren16449"
-               target="_blank" rel="noreferrer">GitHub</a>
-          </p>
-        </section>
+						<!-- UMBC -->
+						<section class="box">
+							<h3 style="margin-bottom: 0.25rem;">
+								Graduate Assistant — Division of Professional Studies, UMBC
+							</h3>
+							<p style="margin-top:0; opacity:0.85;">
+								Baltimore, MD · Jul 2024 – Dec 2025
+							</p>
+							<ul>
+								<li>
+									Designed and automated financial and payroll reporting workflows using <strong>Python and Excel</strong>, reducing manual effort by <strong>40%</strong> while improving data accuracy.
+								</li>
+								<li>
+									Structured document and data organization across Google Workspace and Adobe, improving audit readiness and information retrieval speed.
+								</li>
+								<li>
+									Coordinated payroll and deposit workflows for a multi-person team, reducing processing time by <strong>30%</strong> and minimizing operational friction.
+								</li>
+							</ul>
+						</section>
 
-        <!-- Footer -->
-        <footer id="footer">
-          <p class="copyright">
-            Darren Dcunha • Data Scientist (LLMs + Analytics) • Automation-First<br />
-            &copy; <span id="year"></span> Darren Dcunha. Built with HTML5 UP.
-          </p>
-        </footer>
+						<!-- BizViz -->
+						<section class="box">
+							<h3 style="margin-bottom: 0.25rem;">
+								Data Analyst Intern — BizViz Technologies
+							</h3>
+							<p style="margin-top:0; opacity:0.85;">
+								Bengaluru, India · Jan 2023 – Apr 2023
+							</p>
+							<ul>
+								<li>
+									Analyzed large-scale energy consumption datasets using <strong>Python and SQL</strong> to identify trends, anomalies, and optimization opportunities for enterprise clients.
+								</li>
+								<li>
+									Built analytical reports and dashboards to visualize energy usage patterns, improving performance visibility and data-driven decision-making.
+								</li>
+								<li>
+									Developed and validated SQL queries and Python scripts to ensure data quality and platform reliability across client environments.
+								</li>
+							</ul>
+						</section>
 
-        <a href="assets/Darren_Dcunha_Resume.pdf"
-           class="resume-fab"
-           target="_blank"
-           rel="noreferrer"
-           aria-label="Download Resume">
-          Download Resume
-        </a>
+						<!-- SEG Automotive -->
+						<section class="box">
+							<h3 style="margin-bottom: 0.25rem;">
+								IT Intern — SEG Automotive
+							</h3>
+							<p style="margin-top:0; opacity:0.85;">
+								Bengaluru, India · Aug 2022 – Sep 2022
+							</p>
+							<ul>
+								<li>
+									Built <strong>Power BI</strong> dashboards to monitor production-line KPIs, enabling near real-time visibility for plant managers.
+								</li>
+								<li>
+									Automated data extraction and transformation from manufacturing systems, reducing reporting turnaround time and standardizing KPI reporting.
+								</li>
+								<li>
+									Performed exploratory data analysis to identify process bottlenecks, contributing to measurable productivity improvements.
+								</li>
+							</ul>
+						</section>
 
-      </div>
-    </div>
+					</div>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-  </body>
+					<footer class="major">
+						<ul class="actions special">
+							<li>
+								<a href="assets/Darren_Dcunha_Resume.pdf" class="button" target="_blank" rel="noreferrer">
+									View Full Resume
+								</a>
+							</li>
+						</ul>
+					</footer>
+				</section>
+
+				<!-- Contact -->
+				<section id="contact" class="main special">
+					<header class="major">
+						<h2>Contact</h2>
+						<p>
+							Open to full-time and internship opportunities in Data Science, AI Systems, and Analytics.
+						</p>
+					</header>
+
+					<!-- Embedded contact form -->
+					<form class="contact-form" id="contactForm">
+						<div class="form-row">
+							<div class="field">
+								<label for="cf-name">Name</label>
+								<input type="text" id="cf-name" placeholder="Your name" required />
+							</div>
+							<div class="field">
+								<label for="cf-email">Email</label>
+								<input type="email" id="cf-email" placeholder="your@email.com" required />
+							</div>
+						</div>
+						<div class="field">
+							<label for="cf-subject">Subject</label>
+							<input type="text" id="cf-subject" placeholder="What's this about?" />
+						</div>
+						<div class="field">
+							<label for="cf-message">Message</label>
+							<textarea id="cf-message" placeholder="Tell me about the role or project..." required></textarea>
+						</div>
+						<div class="submit-row">
+							<button type="submit" class="button primary">Send Message</button>
+							<div id="form-status"></div>
+						</div>
+					</form>
+
+					<div class="or-divider">or reach out directly</div>
+
+					<ul class="actions special">
+						<li>
+							<a href="mailto:darrenandrew01@gmail.com" class="button">
+								Email Me
+							</a>
+						</li>
+						<li>
+							<a href="assets/Darren_Dcunha_Resume.pdf" class="button" target="_blank" rel="noreferrer">
+								Download Resume
+							</a>
+						</li>
+					</ul>
+
+					<p style="margin-top: 1.5rem;">
+						<a href="https://www.linkedin.com/in/darrenandrewdcunha" target="_blank" rel="noreferrer">LinkedIn</a>
+						&nbsp;•&nbsp;
+						<a href="https://github.com/darren16449" target="_blank" rel="noreferrer">GitHub</a>
+					</p>
+				</section>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<p class="copyright">
+						Darren Dcunha • Data Scientist (LLMs + Analytics) • Automation-First<br />
+						&copy; <span id="year"></span> Darren Dcunha. Built with HTML5 UP.
+					</p>
+				</footer>
+
+				<a href="assets/Darren_Dcunha_Resume.pdf" class="resume-fab" target="_blank" rel="noreferrer" aria-label="Download Resume">
+					Download Resume
+				</a>
+
+			</div>
+		</div>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script>
+			document.getElementById("year").textContent = new Date().getFullYear();
+
+			// Contact form handler — opens mailto as fallback
+			document.getElementById("contactForm").addEventListener("submit", function(e) {
+				e.preventDefault();
+				const name    = document.getElementById("cf-name").value.trim();
+				const email   = document.getElementById("cf-email").value.trim();
+				const subject = document.getElementById("cf-subject").value.trim() || "Portfolio Contact";
+				const message = document.getElementById("cf-message").value.trim();
+
+				const body = encodeURIComponent(
+					"Name: " + name + "\nEmail: " + email + "\n\n" + message
+				);
+				const subjectEncoded = encodeURIComponent(subject);
+
+				window.location.href =
+					"mailto:darrenandrew01@gmail.com?subject=" + subjectEncoded + "&body=" + body;
+
+				document.getElementById("form-status").textContent =
+					"✓ Opening your email client…";
+			});
+		</script>
+	</body>
 </html>
