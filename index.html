@@ -1,681 +1,1027 @@
 <!DOCTYPE HTML>
-<!--
-	Stellar by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
-	<head>
-		<title>Darren Dcunha | Data Scientist • ML/LLMs</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta name="description" content="Darren Dcunha — Data Scientist focused on analytics, forecasting, and LLM applications. Projects, experience, and contact." />
+<head>
+	<title>Darren Dcunha | Data Scientist • ML/LLMs</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="Darren Dcunha — Data Scientist focused on analytics, forecasting, and LLM applications." />
+	<meta property="og:title" content="Darren Dcunha | Data Scientist • ML/LLMs" />
+	<meta property="og:description" content="Data Scientist focused on analytics, forecasting, and LLM applications." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://darren16449.github.io/" />
+	<meta property="og:image" content="https://darren16449.github.io/images/og.png" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="assets/css/custom.css" />
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-		<!-- OpenGraph / Social Preview -->
-		<meta property="og:title" content="Darren Dcunha | Data Scientist • ML/LLMs" />
-		<meta property="og:description" content="Data Scientist focused on analytics, forecasting, and LLM applications. Projects, experience, and contact." />
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://darren16449.github.io/" />
-		<meta property="og:image" content="https://darren16449.github.io/images/og.png" />
-		<meta name="twitter:card" content="summary_large_image" />
+	<style>
+	/* ── GLOBAL ── */
+	#wrapper { background: #2e2660; }
+	#header  { background: #2e2660; }
 
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="stylesheet" href="assets/css/custom.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	/* ── HERO PARTICLE CANVAS ── */
+	#hero-canvas {
+		position: absolute; inset: 0; width: 100%; height: 100%;
+		opacity: 0.3; pointer-events: none;
+	}
+	#header.alt { position: relative; overflow: hidden; }
+	.hero-badge {
+		display: inline-flex; align-items: center; gap: 6px;
+		background: rgba(255,255,255,0.10); border: 0.5px solid rgba(255,255,255,0.2);
+		border-radius: 999px; padding: 4px 14px; font-size: 0.8rem;
+		color: rgba(255,255,255,0.85); margin-bottom: 0.9rem;
+	}
+	.hero-badge .bdot {
+		width: 7px; height: 7px; background: #5dde8c;
+		border-radius: 50%; animation: bpulse 2s ease-in-out infinite;
+	}
+	@keyframes bpulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+	.hero-typed { min-height: 1.4em; }
+	.hero-cursor {
+		display: inline-block; width: 2px; height: 0.85em;
+		background: rgba(255,255,255,0.7); margin-left: 1px;
+		animation: blink 1s step-end infinite; vertical-align: middle;
+	}
+	@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+	.hero-stats { display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1rem; }
+	.hero-stat-val { font-size: 1.6rem; font-weight: 700; color: #fff; line-height: 1; }
+	.hero-stat-lbl { font-size: 0.72rem; color: rgba(255,255,255,0.5); margin-top: 3px; }
 
-		<style>
-			/* ── Architecture Diagram ── */
-			.arch-diagram {
-				display: flex;
-				align-items: center;
-				flex-wrap: wrap;
-				gap: 0.4rem;
-				margin: 1rem 0 1.25rem;
-				font-size: 0.82rem;
-				font-weight: 600;
-			}
-			.arch-node {
-				background: rgba(255,255,255,0.10);
-				border: 1px solid rgba(255,255,255,0.22);
-				border-radius: 8px;
-				padding: 0.35rem 0.7rem;
-				white-space: nowrap;
-				letter-spacing: 0.2px;
-			}
-			.arch-arrow {
-				opacity: 0.55;
-				font-size: 1rem;
-			}
+	/* ── SKILLS ── */
+	.skills-layout {
+		display: grid; grid-template-columns: 230px 1fr; gap: 1.25rem;
+		align-items: start; max-width: 900px; margin: 0 auto;
+	}
+	@media (max-width: 700px) { .skills-layout { grid-template-columns: 1fr; } }
+	.s-card {
+		background: rgba(255,255,255,0.06); border: 0.5px solid rgba(255,255,255,0.12);
+		border-radius: 16px; padding: 1.25rem;
+	}
+	.s-card-title {
+		font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+		text-transform: uppercase; opacity: 0.5; margin-bottom: 0.75rem;
+	}
+	.radar-legend { display: flex; flex-direction: column; gap: 6px; margin-top: 0.75rem; }
+	.rl-row { display: flex; align-items: center; gap: 7px; font-size: 0.75rem; opacity: 0.75; }
+	.rl-dot { width: 8px; height: 8px; border-radius: 50%; background: #AFA9EC; flex-shrink: 0; }
+	.rl-val { margin-left: auto; font-weight: 700; opacity: 1; }
 
-			/* ── Skill tag badges ── */
-			.skill-group {
-				margin-bottom: 1.5rem;
-			}
-			.skill-group-label {
-				font-size: 0.75rem;
-				font-weight: 800;
-				letter-spacing: 1px;
-				text-transform: uppercase;
-				opacity: 0.6;
-				margin-bottom: 0.5rem;
-			}
-			.skill-tags {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 0.4rem;
-			}
-			.skill-tag {
-				display: inline-flex;
-				align-items: center;
-				padding: 0.3rem 0.7rem;
-				border-radius: 6px;
-				font-size: 0.8rem;
-				font-weight: 700;
-				background: rgba(255,255,255,0.09);
-				border: 1px solid rgba(255,255,255,0.16);
-				letter-spacing: 0.2px;
-			}
+	.grp-label {
+		font-size: 0.68rem; font-weight: 700; letter-spacing: 1px;
+		text-transform: uppercase; opacity: 0.45; margin: 1rem 0 0.5rem;
+	}
+	.grp-label:first-child { margin-top: 0; }
+	.skill-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+	.skill-name { font-size: 0.78rem; width: 150px; flex-shrink: 0; }
+	.bar-track { flex: 1; height: 5px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; }
+	.bar-fill { height: 100%; border-radius: 3px; width: 0; transition: width 1.3s cubic-bezier(.4,0,.2,1); }
+	.bar-pct { font-size: 0.7rem; opacity: 0.5; width: 30px; text-align: right; flex-shrink: 0; }
 
-			/* ── Hero achievement banner ── */
-			.hero-achievement {
-				display: inline-flex;
-				align-items: center;
-				gap: 0.5rem;
-				background: rgba(255,255,255,0.10);
-				border: 1px solid rgba(255,255,255,0.2);
-				border-radius: 999px;
-				padding: 0.4rem 1rem;
-				font-size: 0.85rem;
-				font-weight: 700;
-				margin-bottom: 1.25rem;
-				letter-spacing: 0.2px;
-			}
-			.hero-achievement .dot {
-				width: 7px; height: 7px;
-				background: #5dde8c;
-				border-radius: 50%;
-				display: inline-block;
-				flex-shrink: 0;
-			}
+	.fp-card {
+		background: rgba(255,255,255,0.06); border: 0.5px solid rgba(255,255,255,0.12);
+		border-radius: 16px; padding: 1.1rem 1.25rem;
+		max-width: 900px; margin: 1.25rem auto 0;
+	}
+	.fp-lbl { font-size: 0.68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; opacity: 0.45; margin-bottom: 0.65rem; }
+	.fp-track { height: 16px; border-radius: 6px; display: flex; gap: 2px; overflow: hidden; }
+	.fp-seg { height: 100%; border-radius: 3px; flex: 0; transition: flex 1.3s cubic-bezier(.4,0,.2,1); position: relative; cursor: default; }
+	.fp-tip {
+		position: absolute; bottom: calc(100% + 5px); left: 50%; transform: translateX(-50%);
+		background: rgba(0,0,0,0.75); color: #fff; font-size: 0.65rem; font-weight: 600;
+		padding: 3px 8px; border-radius: 5px; white-space: nowrap;
+		opacity: 0; transition: opacity 0.15s; pointer-events: none; z-index: 10;
+	}
+	.fp-seg:hover .fp-tip { opacity: 1; }
+	.fp-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 0.6rem; }
+	.fp-key { display: flex; align-items: center; gap: 5px; font-size: 0.7rem; opacity: 0.65; }
+	.fp-swatch { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
 
-			/* ── Contact form ── */
-			.contact-form {
-				max-width: 560px;
-				margin: 1.5rem auto 0;
-				text-align: left;
-			}
-			.contact-form .field {
-				margin-bottom: 1rem;
-			}
-			.contact-form label {
-				display: block;
-				font-size: 0.8rem;
-				font-weight: 700;
-				letter-spacing: 0.5px;
-				text-transform: uppercase;
-				opacity: 0.7;
-				margin-bottom: 0.35rem;
-			}
-			.contact-form input,
-			.contact-form textarea {
-				width: 100%;
-				background: rgba(255,255,255,0.07);
-				border: 1px solid rgba(255,255,255,0.18);
-				border-radius: 10px;
-				padding: 0.65rem 0.9rem;
-				font-size: 0.9rem;
-				color: inherit;
-				outline: none;
-				transition: border-color 0.2s;
-				box-sizing: border-box;
-			}
-			.contact-form input:focus,
-			.contact-form textarea:focus {
-				border-color: rgba(255,255,255,0.45);
-			}
-			.contact-form textarea {
-				resize: vertical;
-				min-height: 110px;
-			}
-			.contact-form .form-row {
-				display: grid;
-				grid-template-columns: 1fr 1fr;
-				gap: 0.75rem;
-			}
-			@media (max-width: 600px) {
-				.contact-form .form-row { grid-template-columns: 1fr; }
-			}
-			.contact-form .submit-row {
-				text-align: center;
-				margin-top: 1.25rem;
-			}
-			#form-status {
-				margin-top: 0.75rem;
-				font-size: 0.85rem;
-				font-weight: 600;
-				opacity: 0.85;
-				text-align: center;
-			}
+	/* ── PROJECTS radar cards ── */
+	.proj-grid {
+		display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+		gap: 1rem; max-width: 900px; margin: 0 auto;
+	}
+	.proj-card {
+		background: rgba(255,255,255,0.06); border: 0.5px solid rgba(255,255,255,0.12);
+		border-radius: 16px; padding: 1.25rem;
+		transition: border-color 0.2s, transform 0.2s; cursor: default;
+	}
+	.proj-card:hover { border-color: rgba(255,255,255,0.28); transform: translateY(-2px); }
+	.p-tag { display: inline-block; font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 0.5rem; }
+	.p-tag.ml   { background: rgba(175,169,236,0.2); color: #CECBF6; }
+	.p-tag.rag  { background: rgba(93,202,165,0.2); color: #9FE1CB; }
+	.p-tag.auto { background: rgba(239,159,39,0.2); color: #FAC775; }
+	.p-title { font-size: 0.85rem; font-weight: 600; line-height: 1.35; margin-bottom: 0.25rem; }
+	.p-sub   { font-size: 0.72rem; opacity: 0.55; margin-bottom: 0.9rem; line-height: 1.4; }
+	.p-radar-wrap { display: flex; justify-content: center; margin-bottom: 0.9rem; }
+	.p-impacts { display: flex; gap: 6px; margin-bottom: 0.85rem; }
+	.p-imp { flex: 1; background: rgba(255,255,255,0.06); border-radius: 8px; padding: 6px; text-align: center; }
+	.p-imp-num { font-size: 1rem; font-weight: 700; line-height: 1; }
+	.p-imp-lbl { font-size: 0.6rem; opacity: 0.5; margin-top: 2px; line-height: 1.3; }
+	.p-pills { display: flex; gap: 5px; flex-wrap: wrap; }
+	.p-pill { font-size: 0.65rem; padding: 2px 7px; border: 0.5px solid rgba(255,255,255,0.15); border-radius: 4px; opacity: 0.65; }
+	.p-gh { display: block; text-align: center; font-size: 0.72rem; font-weight: 600; color: #AFA9EC; text-decoration: none; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 0.5px solid rgba(255,255,255,0.1); }
+	.p-gh:hover { color: #CECBF6; }
 
-			/* ── Section divider ── */
-			.or-divider {
-				display: flex;
-				align-items: center;
-				gap: 0.75rem;
-				margin: 1.5rem auto;
-				max-width: 300px;
-				opacity: 0.4;
-				font-size: 0.8rem;
-				font-weight: 700;
-				letter-spacing: 1px;
-				text-transform: uppercase;
-			}
-			.or-divider::before,
-			.or-divider::after {
-				content: '';
-				flex: 1;
-				height: 1px;
-				background: currentColor;
-			}
+	/* ── WHAT I BRING ── */
+	.bring-headline {
+		font-size: 1.65rem; font-weight: 600; line-height: 1.35;
+		max-width: 600px; margin-bottom: 1rem;
+	}
+	.bring-headline em {
+		font-style: normal; color: #AFA9EC; position: relative; display: inline-block;
+	}
+	.bring-headline em::after {
+		content: ''; position: absolute; left: 0; bottom: -2px;
+		height: 2px; width: 0; background: #AFA9EC; border-radius: 1px;
+		animation: uline 0.8s ease forwards 0.7s;
+	}
+	@keyframes uline { to { width: 100%; } }
+	.bring-tagline {
+		font-size: 0.9rem; opacity: 0.7; line-height: 1.8;
+		max-width: 580px; margin-bottom: 1.75rem;
+	}
+	.bring-tagline strong { font-weight: 600; opacity: 1; color: inherit; }
+	.dis-grid {
+		display: grid; grid-template-columns: repeat(auto-fit, minmax(190px,1fr));
+		gap: 10px; max-width: 900px; margin-bottom: 1.5rem;
+	}
+	.dis-card {
+		background: rgba(255,255,255,0.06); border: 0.5px solid rgba(255,255,255,0.10);
+		border-radius: 14px; padding: 1rem;
+		opacity: 0; transform: translateY(12px);
+		transition: opacity 0.45s ease, transform 0.45s ease, border-color 0.2s;
+	}
+	.dis-card.visible { opacity: 1; transform: translateY(0); }
+	.dis-card:hover { border-color: rgba(255,255,255,0.22); }
+	.dis-icon { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.6rem; }
+	.dis-title { font-size: 0.8rem; font-weight: 600; margin-bottom: 0.3rem; }
+	.dis-body  { font-size: 0.72rem; opacity: 0.6; line-height: 1.6; }
 
-			/* ── Color fix: keep hero/all sections in purple, not drifting pink ── */
-			#wrapper { background: #3d3068; }
-			#header { background: #3d3068; }
+	/* ── EXPERIENCE TIMELINE ── */
+	.timeline { position: relative; padding-left: 32px; max-width: 900px; margin: 0 auto; }
+	.timeline::before {
+		content: ''; position: absolute; left: 9px; top: 12px; bottom: 12px;
+		width: 1.5px; background: rgba(255,255,255,0.15);
+	}
+	.tl-item {
+		position: relative; margin-bottom: 1rem;
+		opacity: 0; transform: translateY(14px);
+		transition: opacity 0.45s ease, transform 0.45s ease;
+	}
+	.tl-item.visible { opacity: 1; transform: translateY(0); }
+	.tl-dot-wrap { position: absolute; left: -28px; top: 16px; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; }
+	.tl-dot { width: 14px; height: 14px; border-radius: 50%; border: 2.5px solid #2e2660; transition: transform 0.3s; }
+	.tl-item:hover .tl-dot { transform: scale(1.25); }
+	.tl-dot.current { box-shadow: 0 0 0 3px rgba(29,158,117,0.3); }
+	.tl-card {
+		background: rgba(255,255,255,0.06); border: 0.5px solid rgba(255,255,255,0.10);
+		border-radius: 14px; padding: 1rem 1.15rem; cursor: default;
+		transition: border-color 0.25s;
+	}
+	.tl-card:hover { border-color: rgba(255,255,255,0.22); }
+	.tl-card.current-card { border-color: rgba(29,158,117,0.35); }
+	.tl-card.current-card:hover { border-color: rgba(29,158,117,0.65); }
+	.tl-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.75rem; }
+	.tl-role { font-size: 0.85rem; font-weight: 600; line-height: 1.3; }
+	.tl-right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+	.tl-date { font-size: 0.7rem; opacity: 0.45; }
+	.chevron { width: 13px; height: 13px; flex-shrink: 0; transition: transform 0.35s ease; opacity: 0.4; }
+	.tl-card:hover .chevron { transform: rotate(180deg); opacity: 0.7; }
+	.tl-company { font-size: 0.75rem; opacity: 0.55; margin-top: 0.2rem; display: flex; align-items: center; gap: 6px; }
+	.cur-badge {
+		display: inline-flex; align-items: center; gap: 4px;
+		background: rgba(29,158,117,0.2); color: #9FE1CB;
+		font-size: 0.62rem; font-weight: 700; padding: 2px 8px; border-radius: 999px;
+	}
+	.cur-bdot { width: 5px; height: 5px; border-radius: 50%; background: #5DCAA5; animation: bpulse 1.8s ease-in-out infinite; }
+	.tl-metrics { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 0.65rem; }
+	.m-chip {
+		background: rgba(255,255,255,0.07); border-radius: 7px;
+		padding: 4px 9px; font-size: 0.68rem; font-weight: 600;
+		display: inline-flex; align-items: baseline; gap: 4px;
+	}
+	.m-chip span { font-size: 0.62rem; font-weight: 400; opacity: 0.55; }
+	.tl-expandable { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.38s cubic-bezier(.4,0,.2,1); }
+	.tl-card:hover .tl-expandable { grid-template-rows: 1fr; }
+	.tl-expandable-inner { overflow: hidden; }
+	.tl-bullets { margin: 0.7rem 0 0 1rem; list-style: disc; }
+	.tl-bullets li { font-size: 0.75rem; opacity: 0.65; line-height: 1.65; margin-bottom: 0.25rem; }
+	.tl-bullets li strong { font-weight: 600; opacity: 1; }
+	.tl-tech { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 0.6rem; padding-top: 0.6rem; border-top: 0.5px solid rgba(255,255,255,0.08); }
+	.t-tag { font-size: 0.62rem; padding: 2px 7px; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 4px; opacity: 0.55; }
 
-			/* ── Project 3 pill row ── */
-			#projects .box h3 + .pill-row { margin-top: 0.3rem; }
-		</style>
-	</head>
-	<body class="is-preload">
+	/* ── ASK DARREN ── */
+	.chat-wrap {
+		background: rgba(255,255,255,0.06); border: 0.5px solid rgba(255,255,255,0.12);
+		border-radius: 16px; overflow: hidden; max-width: 900px; margin: 0 auto;
+	}
+	.chat-header {
+		padding: 1rem 1.25rem; border-bottom: 0.5px solid rgba(255,255,255,0.08);
+		display: flex; align-items: center; gap: 10px;
+	}
+	.chat-av {
+		width: 38px; height: 38px; border-radius: 50%;
+		background: rgba(175,169,236,0.25); display: flex; align-items: center;
+		justify-content: center; font-size: 0.8rem; font-weight: 700; color: #CECBF6; flex-shrink: 0;
+	}
+	.chat-hname { font-size: 0.88rem; font-weight: 600; }
+	.chat-hsub  { font-size: 0.7rem; opacity: 0.5; display: flex; align-items: center; gap: 5px; margin-top: 1px; }
+	.chat-msgs {
+		padding: 1rem 1.25rem; display: flex; flex-direction: column;
+		gap: 0.75rem; min-height: 260px; max-height: 380px; overflow-y: auto; scroll-behavior: smooth;
+	}
+	.msg { display: flex; gap: 8px; align-items: flex-end; max-width: 90%; }
+	.msg.user { align-self: flex-end; flex-direction: row-reverse; }
+	.bubble {
+		padding: 0.55rem 0.9rem; border-radius: 14px; font-size: 0.8rem;
+		line-height: 1.6; background: rgba(255,255,255,0.08);
+		border: 0.5px solid rgba(255,255,255,0.1); color: inherit;
+	}
+	.msg.user .bubble { background: #534AB7; border-color: #534AB7; }
+	.msg-av {
+		width: 26px; height: 26px; border-radius: 50%;
+		background: rgba(175,169,236,0.2); display: flex; align-items: center;
+		justify-content: center; font-size: 0.62rem; font-weight: 700; color: #CECBF6; flex-shrink: 0;
+	}
+	.msg.user .msg-av { background: #7F77DD; color: #fff; }
+	.typing-bubble { display: flex; align-items: center; gap: 4px; padding: 0.55rem 0.9rem; }
+	.tdot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.4); animation: tda 1.2s ease-in-out infinite; }
+	.tdot:nth-child(2){animation-delay:.2s} .tdot:nth-child(3){animation-delay:.4s}
+	@keyframes tda{0%,80%,100%{transform:translateY(0);opacity:0.4}40%{transform:translateY(-5px);opacity:1}}
+	.sugs { padding: 0 1.25rem 0.75rem; display: flex; gap: 6px; flex-wrap: wrap; }
+	.sug {
+		font-size: 0.7rem; opacity: 0.65; padding: 4px 11px;
+		border: 0.5px solid rgba(255,255,255,0.18); border-radius: 999px;
+		background: transparent; cursor: pointer; color: inherit; font-family: inherit;
+		transition: opacity 0.15s, background 0.15s;
+	}
+	.sug:hover { opacity: 1; background: rgba(255,255,255,0.08); }
+	.chat-input-row {
+		padding: 0.75rem 1.25rem; border-top: 0.5px solid rgba(255,255,255,0.08);
+		display: flex; gap: 8px; align-items: center;
+	}
+	.chat-in {
+		flex: 1; font-size: 0.8rem; border: 0.5px solid rgba(255,255,255,0.15);
+		border-radius: 999px; padding: 8px 14px; background: rgba(255,255,255,0.06);
+		color: inherit; font-family: inherit; outline: none; transition: border-color 0.2s;
+	}
+	.chat-in:focus { border-color: rgba(255,255,255,0.35); }
+	.send-btn {
+		width: 32px; height: 32px; border-radius: 50%; background: #534AB7;
+		border: none; cursor: pointer; display: flex; align-items: center;
+		justify-content: center; flex-shrink: 0; transition: background 0.15s;
+	}
+	.send-btn:hover { background: #3C3489; }
+	.send-btn svg { width: 14px; height: 14px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
-		<!-- Wrapper -->
-		<div id="wrapper">
+	/* ── ARCH DIAGRAM ── */
+	.arch-diagram { display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0 1.25rem; font-size: 0.8rem; font-weight: 600; }
+	.arch-node { background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 0.3rem 0.65rem; white-space: nowrap; }
+	.arch-arrow { opacity: 0.45; font-size: 0.9rem; }
+	.pill { display: inline-flex; align-items: center; padding: 0.3rem 0.65rem; border-radius: 999px; font-size: 0.72rem; font-weight: 700; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); }
+	.pill-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.25rem 0 0.85rem; }
 
-			<!-- Header -->
-			<header id="header" class="alt">
-				<h1>Darren Dcunha</h1>
-				<p>
-					Data Scientist • Analytics • ML/LLMs<br />
-					Building forecasting, data products, and LLM apps with Python + SQL.
-				</p>
-			</header>
+	/* ── CONTACT FORM ── */
+	.contact-form { max-width: 560px; margin: 1.5rem auto 0; text-align: left; }
+	.contact-form .field { margin-bottom: 1rem; }
+	.contact-form label { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.6; margin-bottom: 0.35rem; }
+	.contact-form input, .contact-form textarea {
+		width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
+		border-radius: 10px; padding: 0.65rem 0.9rem; font-size: 0.85rem; color: inherit;
+		outline: none; transition: border-color 0.2s; box-sizing: border-box; font-family: inherit;
+	}
+	.contact-form input:focus, .contact-form textarea:focus { border-color: rgba(255,255,255,0.4); }
+	.contact-form textarea { resize: vertical; min-height: 110px; }
+	.contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+	@media (max-width: 600px) { .contact-form .form-row { grid-template-columns: 1fr; } }
+	.contact-form .submit-row { text-align: center; margin-top: 1.25rem; }
+	#form-status { margin-top: 0.75rem; font-size: 0.8rem; font-weight: 600; opacity: 0.75; text-align: center; }
+	.or-divider { display: flex; align-items: center; gap: 0.75rem; margin: 1.5rem auto; max-width: 300px; opacity: 0.3; font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+	.or-divider::before,.or-divider::after { content:''; flex:1; height:1px; background:currentColor; }
 
-			<!-- Nav -->
-			<nav id="nav">
-				<ul>
-					<li><a href="#intro" class="active">About</a></li>
-					<li><a href="#skills">Skills</a></li>
-					<li><a href="#projects">Projects</a></li>
-					<li><a href="#experience">Experience</a></li>
-					<li><a href="#contact">Contact</a></li>
-				</ul>
-			</nav>
+	/* ── PROFILE PIC ── */
+	.profile-pic { border-radius: 20px; box-shadow: 0 18px 55px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); }
 
-			<!-- Main -->
-			<div id="main">
+	/* ── RESUME FAB ── */
+	.resume-fab {
+		position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+		display: inline-flex; align-items: center; justify-content: center;
+		padding: 0.85rem 1rem; border-radius: 999px; font-weight: 800;
+		font-size: 0.8rem; letter-spacing: 0.4px; text-decoration: none;
+		background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.2);
+		box-shadow: 0 12px 35px rgba(0,0,0,0.25); backdrop-filter: blur(10px);
+		transition: transform 0.2s;
+	}
+	.resume-fab:hover { transform: translateY(-2px); text-decoration: none; }
+	</style>
+</head>
+<body class="is-preload">
+<div id="wrapper">
 
-				<!-- About / Hero -->
-				<section id="intro" class="main">
-					<div class="spotlight">
-						<div class="content">
-							<header class="major">
-								<h2>Hi, I'm Darren 👋</h2>
-							</header>
+<!-- ══ HEADER / HERO ══ -->
+<header id="header" class="alt">
+	<canvas id="hero-canvas"></canvas>
+	<div style="position:relative;z-index:1">
+		<p class="hero-badge"><span class="bdot"></span>Open to new roles · Baltimore, MD</p>
+		<h1>Darren Dcunha</h1>
+		<p class="hero-typed" id="heroTyped"></p>
+		<p style="margin-top:0.5rem;opacity:0.7;font-size:0.9rem">I turn messy data into decisions — pipelines, LLM apps, and analytics that compound in value.</p>
+		<div class="hero-stats">
+			<div><div class="hero-stat-val" id="hs1">0</div><div class="hero-stat-lbl">GitHub repos</div></div>
+			<div><div class="hero-stat-val" id="hs2">0%</div><div class="hero-stat-lbl">effort saved at UMBC</div></div>
+			<div><div class="hero-stat-val" id="hs3">0+</div><div class="hero-stat-lbl">years building</div></div>
+		</div>
+	</div>
+</header>
 
-							<!-- Achievement banner -->
-							<p>
-								<span class="hero-achievement">
-									<span class="dot"></span>
-									Cut manual reporting effort by 40% · Automated pipelines across 3 roles
-								</span>
-							</p>
+<!-- ══ NAV ══ -->
+<nav id="nav">
+	<ul>
+		<li><a href="#intro" class="active">About</a></li>
+		<li><a href="#skills">Skills</a></li>
+		<li><a href="#projects">Projects</a></li>
+		<li><a href="#experience">Experience</a></li>
+		<li><a href="#contact">Contact</a></li>
+	</ul>
+</nav>
 
-							<p>
-								I build systems that turn messy data into decisions — from reliable pipelines and reporting automation to ML/LLM workflows that scale.
-							</p>
-							<p>
-								Recent work includes an LLM-based synthetic financial time-series generator with automated statistical validation, and a RAG-powered marketing content assistant that produces multilingual, tone-controlled outputs.
-							</p>
+<div id="main">
 
-							<!-- Open-to strip -->
-							<p style="margin-top: 0.75rem;">
-								<strong>Open to:</strong> Data Scientist • ML Engineer • Data Analyst • Data Engineer<br />
-								<strong>Focus:</strong> LLM apps/RAG • Forecasting • Reporting automation • ETL pipelines
-							</p>
+<!-- ══ ABOUT ══ -->
+<section id="intro" class="main">
+	<div class="spotlight">
+		<div class="content">
+			<header class="major"><h2>Hi, I'm Darren 👋</h2></header>
+			<p>I build systems that turn messy data into decisions — from reliable pipelines and reporting automation to ML/LLM workflows that scale.</p>
+			<p>Recent work includes an LLM-based synthetic financial time-series generator with automated statistical validation, and a RAG-powered marketing content assistant that produces multilingual, tone-controlled outputs.</p>
+			<p style="margin-top:0.75rem">
+				<strong>Open to:</strong> Data Scientist • ML Engineer • Data Analyst • Data Engineer<br/>
+				<strong>Focus:</strong> LLM apps/RAG • Forecasting • Reporting automation • ETL pipelines
+			</p>
+			<ul class="actions">
+				<li><a href="#projects" class="button primary">View Projects</a></li>
+				<li><a href="assets/Darren_Dcunha_Resume.pdf" class="button" target="_blank" rel="noreferrer">Download Resume</a></li>
+			</ul>
+			<p style="margin-top:0.75rem">
+				<a href="https://www.linkedin.com/in/darrenandrewdcunha" target="_blank" rel="noreferrer">LinkedIn</a> &nbsp;•&nbsp;
+				<a href="https://github.com/darren16449" target="_blank" rel="noreferrer">GitHub</a> &nbsp;•&nbsp;
+				<a href="mailto:darrenandrew01@gmail.com">darrenandrew01@gmail.com</a>
+			</p>
+		</div>
+		<span class="image"><img src="images/headshot.jpg" alt="Darren Dcunha" class="profile-pic"/></span>
+	</div>
+</section>
 
-							<ul class="actions">
-								<li><a href="#projects" class="button primary">View Projects</a></li>
-								<li><a href="assets/Darren_Dcunha_Resume.pdf" class="button" target="_blank" rel="noreferrer">Download Resume</a></li>
-							</ul>
+<!-- ══ SKILLS ══ -->
+<section id="skills" class="main special">
+	<header class="major">
+		<h2>Skills</h2>
+		<p>Technical capabilities across data engineering, AI systems, and automation.</p>
+	</header>
 
-							<p style="margin-top: 0.75rem;">
-								<a href="https://www.linkedin.com/in/darrenandrewdcunha" target="_blank" rel="noreferrer">LinkedIn</a>
-								&nbsp;•&nbsp;
-								<a href="https://github.com/darren16449" target="_blank" rel="noreferrer">GitHub</a>
-								&nbsp;•&nbsp;
-								<a href="mailto:darrenandrew01@gmail.com">darrenandrew01@gmail.com</a>
-							</p>
-						</div>
-						<span class="image">
-							<img src="images/headshot.jpg" alt="Darren Dcunha headshot" class="profile-pic" />
-						</span>
+	<div class="skills-layout" id="skillsLayout">
+		<!-- Radar -->
+		<div class="s-card">
+			<div class="s-card-title">Profile overview</div>
+			<div style="display:flex;justify-content:center">
+				<canvas id="radarC" width="180" height="180"></canvas>
+			</div>
+			<div class="radar-legend" id="radarLegend"></div>
+		</div>
+		<!-- Bars -->
+		<div class="s-card" id="barsCard">
+			<div class="grp-label">Languages & querying</div>
+			<div class="skill-row"><span class="skill-name">Python</span><div class="bar-track"><div class="bar-fill" style="background:#AFA9EC" data-w="93"></div></div><span class="bar-pct">93%</span></div>
+			<div class="skill-row"><span class="skill-name">SQL</span><div class="bar-track"><div class="bar-fill" style="background:#AFA9EC" data-w="88"></div></div><span class="bar-pct">88%</span></div>
+			<div class="skill-row"><span class="skill-name">Pandas / NumPy</span><div class="bar-track"><div class="bar-fill" style="background:#AFA9EC" data-w="85"></div></div><span class="bar-pct">85%</span></div>
+			<div class="grp-label">AI / ML / LLMs</div>
+			<div class="skill-row"><span class="skill-name">LLMs & RAG</span><div class="bar-track"><div class="bar-fill" style="background:#5DCAA5" data-w="90"></div></div><span class="bar-pct">90%</span></div>
+			<div class="skill-row"><span class="skill-name">Prompt engineering</span><div class="bar-track"><div class="bar-fill" style="background:#5DCAA5" data-w="88"></div></div><span class="bar-pct">88%</span></div>
+			<div class="skill-row"><span class="skill-name">OpenAI / ChromaDB</span><div class="bar-track"><div class="bar-fill" style="background:#5DCAA5" data-w="85"></div></div><span class="bar-pct">85%</span></div>
+			<div class="grp-label">Data engineering</div>
+			<div class="skill-row"><span class="skill-name">Pipeline automation</span><div class="bar-track"><div class="bar-fill" style="background:#EF9F27" data-w="92"></div></div><span class="bar-pct">92%</span></div>
+			<div class="skill-row"><span class="skill-name">Data modeling / ERD</span><div class="bar-track"><div class="bar-fill" style="background:#EF9F27" data-w="87"></div></div><span class="bar-pct">87%</span></div>
+			<div class="skill-row"><span class="skill-name">ETL / ELT</span><div class="bar-track"><div class="bar-fill" style="background:#EF9F27" data-w="85"></div></div><span class="bar-pct">85%</span></div>
+			<div class="grp-label">Analytics & visualisation</div>
+			<div class="skill-row"><span class="skill-name">Power BI</span><div class="bar-track"><div class="bar-fill" style="background:#F0997B" data-w="82"></div></div><span class="bar-pct">82%</span></div>
+			<div class="skill-row"><span class="skill-name">Tableau</span><div class="bar-track"><div class="bar-fill" style="background:#F0997B" data-w="78"></div></div><span class="bar-pct">78%</span></div>
+		</div>
+	</div>
+
+	<!-- Domain fingerprint -->
+	<div class="fp-card" id="fpCard">
+		<div class="fp-lbl">Domain fingerprint — where my work lives</div>
+		<div class="fp-track" id="fpTrack"></div>
+		<div class="fp-row" id="fpLegend"></div>
+	</div>
+
+	<!-- What I bring section -->
+	<div style="max-width:900px;margin:2.5rem auto 0;text-align:left">
+		<div class="bring-headline">
+			I don't just analyse data —<br>I build systems that make <em>decisions automatic</em>.
+		</div>
+		<p class="bring-tagline">
+			Most teams are drowning in data but starving for action. I sit at the intersection of
+			<strong>LLM engineering, data pipelines, and analytics</strong> — which means I can take a messy,
+			manual process and turn it into a self-running system in weeks, not quarters.
+			Whether it's a RAG app that cuts content busywork, a pipeline that reduces reporting effort by 40%,
+			or a custom metric framework that makes cross-institution data actually comparable —
+			I build things that <strong>compound in value over time</strong>.
+		</p>
+		<div class="dis-grid" id="disGrid">
+			<div class="dis-card">
+				<div class="dis-icon" style="background:rgba(175,169,236,0.2)">
+					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#AFA9EC" stroke-width="1.5" stroke-linecap="round"><path d="M2 12L6 4l3 5 2-3 3 5"/></svg>
+				</div>
+				<div class="dis-title">LLM-powered automation</div>
+				<div class="dis-body">I wire LLMs into real workflows — reporting, content, data generation — with validation and guardrails baked in.</div>
+			</div>
+			<div class="dis-card">
+				<div class="dis-icon" style="background:rgba(93,202,165,0.2)">
+					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#5DCAA5" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><path d="M9 11.5h5M11.5 9v5"/></svg>
+				</div>
+				<div class="dis-title">Scalable data systems</div>
+				<div class="dis-body">From ERD design to ETL pipelines — infrastructure that doesn't break when the org scales, with validation from day one.</div>
+			</div>
+			<div class="dis-card">
+				<div class="dis-icon" style="background:rgba(239,159,39,0.2)">
+					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#EF9F27" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
+				</div>
+				<div class="dis-title">Decisions at speed</div>
+				<div class="dis-body">Raw data into executive-ready dashboards and custom KPIs — stakeholders stop waiting for reports and start acting on signals.</div>
+			</div>
+			<div class="dis-card">
+				<div class="dis-icon" style="background:rgba(240,153,123,0.2)">
+					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#F0997B" stroke-width="1.5" stroke-linecap="round"><path d="M8 2v4M8 10v4M2 8h4M10 8h4"/><circle cx="8" cy="8" r="2"/></svg>
+				</div>
+				<div class="dis-title">Cross-domain thinking</div>
+				<div class="dis-body">I've shipped across education, finance, energy, and manufacturing. I bring pattern recognition that pure specialists miss.</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ══ PROJECTS ══ -->
+<section id="projects" class="main special">
+	<header class="major">
+		<h2>Featured Projects</h2>
+		<p>Radar shows skill depth across five dimensions — one glance, full picture.</p>
+	</header>
+	<div class="proj-grid" id="projGrid"></div>
+	<footer class="major">
+		<ul class="actions special">
+			<li><a href="https://github.com/darren16449" class="button primary" target="_blank" rel="noreferrer">View All on GitHub</a></li>
+		</ul>
+	</footer>
+</section>
+
+<!-- ══ EXPERIENCE ══ -->
+<section id="experience" class="main special">
+	<header class="major">
+		<h2>Experience</h2>
+		<p>Building data systems and automation-first workflows across education, finance, and operations.<br/><small style="opacity:0.5">Hover any card to expand details</small></p>
+	</header>
+	<div class="timeline" id="timeline">
+
+		<!-- YPI -->
+		<div class="tl-item">
+			<div class="tl-dot-wrap"><div class="tl-dot current" style="background:#1D9E75"></div></div>
+			<div class="tl-card current-card">
+				<div class="tl-head">
+					<div class="tl-role">Data Engineer Intern</div>
+					<div class="tl-right">
+						<span class="tl-date">Jan 2026 – Present</span>
+						<svg class="chevron" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5l5 5 5-5"/></svg>
 					</div>
-				</section>
-
-				<!-- Skills -->
-				<section id="skills" class="main special">
-					<header class="major">
-						<h2>Skills</h2>
-						<p>Technical capabilities aligned with data engineering, AI systems, and automation.</p>
-					</header>
-
-					<div style="max-width:860px; margin:0 auto; text-align:left;">
-
-						<div class="skill-group">
-							<div class="skill-group-label">Languages & Querying</div>
-							<div class="skill-tags">
-								<span class="skill-tag">Python</span>
-								<span class="skill-tag">SQL</span>
-								<span class="skill-tag">Pandas</span>
-								<span class="skill-tag">NumPy</span>
-								<span class="skill-tag">Bash</span>
-							</div>
-						</div>
-
-						<div class="skill-group">
-							<div class="skill-group-label">AI / ML / LLMs</div>
-							<div class="skill-tags">
-								<span class="skill-tag">LLMs</span>
-								<span class="skill-tag">RAG</span>
-								<span class="skill-tag">Prompt Engineering</span>
-								<span class="skill-tag">OpenAI API</span>
-								<span class="skill-tag">ChromaDB</span>
-								<span class="skill-tag">Hugging Face</span>
-								<span class="skill-tag">NLP</span>
-								<span class="skill-tag">Time Series</span>
-								<span class="skill-tag">Feature Engineering</span>
-							</div>
-						</div>
-
-						<div class="skill-group">
-							<div class="skill-group-label">Data Engineering</div>
-							<div class="skill-tags">
-								<span class="skill-tag">ETL / ELT Pipelines</span>
-								<span class="skill-tag">Data Modeling</span>
-								<span class="skill-tag">Schema Design</span>
-								<span class="skill-tag">Pipeline Automation</span>
-								<span class="skill-tag">Data Validation</span>
-								<span class="skill-tag">Workflow Orchestration</span>
-							</div>
-						</div>
-
-						<div class="skill-group">
-							<div class="skill-group-label">Analytics & Visualization</div>
-							<div class="skill-tags">
-								<span class="skill-tag">Power BI</span>
-								<span class="skill-tag">Tableau</span>
-								<span class="skill-tag">KPI Development</span>
-								<span class="skill-tag">Executive Dashboards</span>
-								<span class="skill-tag">Trend Analysis</span>
-							</div>
-						</div>
-
-						<div class="skill-group">
-							<div class="skill-group-label">Tools & Process</div>
-							<div class="skill-tags">
-								<span class="skill-tag">Git</span>
-								<span class="skill-tag">Agile / Scrum</span>
-								<span class="skill-tag">SDLC</span>
-								<span class="skill-tag">UAT</span>
-								<span class="skill-tag">Streamlit</span>
-								<span class="skill-tag">Google Workspace</span>
-								<span class="skill-tag">Stakeholder Communication</span>
-							</div>
-						</div>
-
-					</div>
-				</section>
-
-				<!-- Projects -->
-				<section id="projects" class="main special">
-					<header class="major">
-						<h2>Featured Projects</h2>
-						<p>Selected projects demonstrating AI systems, data pipelines, and automation.</p>
-					</header>
-
-					<div style="text-align:left; max-width: 900px; margin: 0 auto;">
-
-						<!-- Project 1 -->
-						<section class="box">
-							<header class="major" style="margin-bottom: 0.75rem;">
-								<h3 style="margin-bottom: 0.25rem;">
-									FinSynGen — LLM-Based Synthetic Financial Time-Series Generator
-								</h3>
-								<div class="pill-row" style="margin: 0.25rem 0 0;">
-									<span class="pill">Python</span>
-									<span class="pill">OpenAI</span>
-									<span class="pill">Time Series</span>
-									<span class="pill">Statistical Validation</span>
-								</div>
-							</header>
-
-							<p><strong>Problem:</strong> Real market data can be insufficient for stress testing and simulation of rare or extreme scenarios.</p>
-							<p><strong>Approach:</strong> Generate synthetic log-return series using LLM prompting, then automatically validate realism with statistical checks — rejecting and regenerating weak samples.</p>
-
-							<!-- Architecture diagram -->
-							<div class="arch-diagram">
-								<span class="arch-node">Prompt Engineering</span>
-								<span class="arch-arrow">→</span>
-								<span class="arch-node">LLM Generation</span>
-								<span class="arch-arrow">→</span>
-								<span class="arch-node">KS / Distribution Tests</span>
-								<span class="arch-arrow">→</span>
-								<span class="arch-node">Auto-Regeneration</span>
-								<span class="arch-arrow">→</span>
-								<span class="arch-node">Exportable Dataset</span>
-							</div>
-
-							<p><strong>Impact:</strong> Enables risk simulation and scenario testing when historical datasets are limited or incomplete — no manual data collection required.</p>
-							<p style="margin-top: 0.75rem;"><strong>Demonstrates:</strong> Statistical evaluation (DS), pipeline automation (DE), LLM workflow design (ML).</p>
-
-							<ul class="actions" style="margin-top: 0.75rem;">
-								<li>
-									<a class="button" href="https://github.com/darren16449/-FinSynGen-Synthetic-Financial-Data-Generator" target="_blank" rel="noreferrer">
-										View on GitHub
-									</a>
-								</li>
-							</ul>
-						</section>
-
-						<!-- Project 2 -->
-						<section class="box">
-							<header class="major" style="margin-bottom: 0.75rem;">
-								<h3 style="margin-bottom: 0.25rem;">
-									Marketing Content Assistant — LLM + RAG Application
-								</h3>
-								<div class="pill-row" style="margin: 0.25rem 0 0;">
-									<span class="pill">OpenAI</span>
-									<span class="pill">RAG</span>
-									<span class="pill">ChromaDB</span>
-									<span class="pill">Streamlit</span>
-								</div>
-							</header>
-
-							<p><strong>Problem:</strong> Marketing content needs speed, consistency, and brand control — but generic LLM outputs drift and hallucinate without grounding.</p>
-							<p><strong>Approach:</strong> Retrieval-Augmented Generation grounds every output in relevant context, with prompt templates enforcing tone and format controls for multilingual generation.</p>
-
-							<!-- Architecture diagram -->
-							<div class="arch-diagram">
-								<span class="arch-node">User Input</span>
-								<span class="arch-arrow">→</span>
-								<span class="arch-node">Embedding Search (ChromaDB)</span>
-								<span class="arch-arrow">→</span>
-								<span class="arch-node">Context Injection</span>
-								<span class="arch-arrow">→</span>
-								<span class="arch-node">GPT Generation</span>
-								<span class="arch-arrow">→</span>
-								<span class="arch-node">Structured Output</span>
-							</div>
-
-							<p><strong>Impact:</strong> Produces grounded, reusable marketing copy with controllable tone, format, and keyword guidance — reducing content drift significantly.</p>
-							<p style="margin-top: 0.75rem;"><strong>Demonstrates:</strong> RAG implementation (ML), vector search systems (DE), structured outputs (Analytics).</p>
-
-							<ul class="actions" style="margin-top: 0.75rem;">
-								<li>
-									<a class="button" href="https://github.com/darren16449/Marketing-Content-Assistant" target="_blank" rel="noreferrer">
-										View on GitHub
-									</a>
-								</li>
-							</ul>
-						</section>
-
-						<!-- Project 3 -->
-						<section class="box">
-							<header class="major" style="margin-bottom: 0.75rem;">
-								<h3 style="margin-bottom: 0.25rem;">
-									Automated Financial & Operational Reporting Pipelines
-								</h3>
-								<div class="pill-row" style="margin: 0.25rem 0 0;">
-									<span class="pill">Python</span>
-									<span class="pill">SQL</span>
-									<span class="pill">Automation</span>
-									<span class="pill">Analytics</span>
-								</div>
-							</header>
-
-							<p><strong>Problem:</strong> Manual financial and ops reporting is slow, error-prone, and difficult to audit — especially across multi-person teams.</p>
-							<p><strong>Approach:</strong> Replace repetitive workflows with automated extraction, validation, transformation, and standardized outputs.</p>
-
-							<!-- Architecture diagram -->
-							<div class="arch-diagram">
-								<span class="arch-node">Raw Data Sources</span>
-								<span class="arch-arrow">→</span>
-								<span class="arch-node">Python Extraction</span>
-								<span class="arch-arrow">→</span>
-								<span class="arch-node">SQL Validation</span>
-								<span class="arch-arrow">→</span>
-								<span class="arch-node">Transformation</span>
-								<span class="arch-arrow">→</span>
-								<span class="arch-node">Standardized Reports</span>
-							</div>
-
-							<p><strong>Impact:</strong> Reduced manual reporting effort by <strong>40%</strong>, cut processing time by <strong>30%</strong>, and improved auditability and turnaround time across stakeholders.</p>
-
-							<ul>
-								<li>Automated data extraction, validation, and transformation workflows</li>
-								<li>Standardized outputs for cross-functional stakeholders</li>
-								<li>Improved accuracy, traceability, and reporting consistency</li>
-							</ul>
-
-							<ul class="actions">
-								<li>
-									<a class="button" href="assets/Darren_Dcunha_Resume.pdf" target="_blank" rel="noreferrer">
-										See Related Experience
-									</a>
-								</li>
-							</ul>
-						</section>
-
-					</div>
-
-					<footer class="major">
-						<ul class="actions special">
-							<li>
-								<a href="https://github.com/darren16449" class="button primary" target="_blank" rel="noreferrer">
-									View All Projects on GitHub
-								</a>
-							</li>
-						</ul>
-					</footer>
-				</section>
-
-				<!-- Experience -->
-				<section id="experience" class="main special">
-					<header class="major">
-						<h2>Experience</h2>
-						<p>Building automation-first systems across finance, analytics, and operations.</p>
-					</header>
-
-					<div style="text-align:left; max-width: 900px; margin: 0 auto;">
-
-						<!-- UMBC -->
-						<section class="box">
-							<h3 style="margin-bottom: 0.25rem;">
-								Graduate Assistant — Division of Professional Studies, UMBC
-							</h3>
-							<p style="margin-top:0; opacity:0.85;">
-								Baltimore, MD · Jul 2024 – Dec 2025
-							</p>
-							<ul>
-								<li>
-									Designed and automated financial and payroll reporting workflows using <strong>Python and Excel</strong>, reducing manual effort by <strong>40%</strong> while improving data accuracy.
-								</li>
-								<li>
-									Structured document and data organization across Google Workspace and Adobe, improving audit readiness and information retrieval speed.
-								</li>
-								<li>
-									Coordinated payroll and deposit workflows for a multi-person team, reducing processing time by <strong>30%</strong> and minimizing operational friction.
-								</li>
-							</ul>
-						</section>
-
-						<!-- BizViz -->
-						<section class="box">
-							<h3 style="margin-bottom: 0.25rem;">
-								Data Analyst Intern — BizViz Technologies
-							</h3>
-							<p style="margin-top:0; opacity:0.85;">
-								Bengaluru, India · Jan 2023 – Apr 2023
-							</p>
-							<ul>
-								<li>
-									Analyzed large-scale energy consumption datasets using <strong>Python and SQL</strong> to identify trends, anomalies, and optimization opportunities for enterprise clients.
-								</li>
-								<li>
-									Built analytical reports and dashboards to visualize energy usage patterns, improving performance visibility and data-driven decision-making.
-								</li>
-								<li>
-									Developed and validated SQL queries and Python scripts to ensure data quality and platform reliability across client environments.
-								</li>
-							</ul>
-						</section>
-
-						<!-- SEG Automotive -->
-						<section class="box">
-							<h3 style="margin-bottom: 0.25rem;">
-								IT Intern — SEG Automotive
-							</h3>
-							<p style="margin-top:0; opacity:0.85;">
-								Bengaluru, India · Aug 2022 – Sep 2022
-							</p>
-							<ul>
-								<li>
-									Built <strong>Power BI</strong> dashboards to monitor production-line KPIs, enabling near real-time visibility for plant managers.
-								</li>
-								<li>
-									Automated data extraction and transformation from manufacturing systems, reducing reporting turnaround time and standardizing KPI reporting.
-								</li>
-								<li>
-									Performed exploratory data analysis to identify process bottlenecks, contributing to measurable productivity improvements.
-								</li>
-							</ul>
-						</section>
-
-					</div>
-
-					<footer class="major">
-						<ul class="actions special">
-							<li>
-								<a href="assets/Darren_Dcunha_Resume.pdf" class="button" target="_blank" rel="noreferrer">
-									View Full Resume
-								</a>
-							</li>
-						</ul>
-					</footer>
-				</section>
-
-				<!-- Contact -->
-				<section id="contact" class="main special">
-					<header class="major">
-						<h2>Contact</h2>
-						<p>
-							Open to full-time and internship opportunities in Data Science, AI Systems, and Analytics.
-						</p>
-					</header>
-
-					<!-- Embedded contact form -->
-					<form class="contact-form" id="contactForm">
-						<div class="form-row">
-							<div class="field">
-								<label for="cf-name">Name</label>
-								<input type="text" id="cf-name" placeholder="Your name" required />
-							</div>
-							<div class="field">
-								<label for="cf-email">Email</label>
-								<input type="email" id="cf-email" placeholder="your@email.com" required />
-							</div>
-						</div>
-						<div class="field">
-							<label for="cf-subject">Subject</label>
-							<input type="text" id="cf-subject" placeholder="What's this about?" />
-						</div>
-						<div class="field">
-							<label for="cf-message">Message</label>
-							<textarea id="cf-message" placeholder="Tell me about the role or project..." required></textarea>
-						</div>
-						<div class="submit-row">
-							<button type="submit" class="button primary">Send Message</button>
-							<div id="form-status"></div>
-						</div>
-					</form>
-
-					<div class="or-divider">or reach out directly</div>
-
-					<ul class="actions special">
-						<li>
-							<a href="mailto:darrenandrew01@gmail.com" class="button">
-								Email Me
-							</a>
-						</li>
-						<li>
-							<a href="assets/Darren_Dcunha_Resume.pdf" class="button" target="_blank" rel="noreferrer">
-								Download Resume
-							</a>
-						</li>
+				</div>
+				<div class="tl-company">Young Progressive Initiatives (YPI) · Remote <span class="cur-badge"><span class="cur-bdot"></span>Current</span></div>
+				<div class="tl-metrics">
+					<div class="m-chip">ERD <span>data model</span></div>
+					<div class="m-chip">GPA+ / ADL+ <span>custom metrics</span></div>
+					<div class="m-chip">Cross-institution <span>analytics</span></div>
+				</div>
+				<div class="tl-expandable"><div class="tl-expandable-inner">
+					<ul class="tl-bullets">
+						<li>Designed a scalable relational data model and ERD integrating student, course, and academic performance datasets for <strong>large-scale educational analytics</strong>.</li>
+						<li>Developed advanced metrics — <strong>GPA+, ADL+, weighted GPA</strong> — enabling fair cross-institution comparison of student outcomes.</li>
+						<li>Built data validation, normalization, and integrity-check workflows ensuring high-quality datasets for reporting and downstream decision-making.</li>
+						<li>Documented data definitions, metrics logic, and data structures for consistency and maintainability across datasets.</li>
 					</ul>
-
-					<p style="margin-top: 1.5rem;">
-						<a href="https://www.linkedin.com/in/darrenandrewdcunha" target="_blank" rel="noreferrer">LinkedIn</a>
-						&nbsp;•&nbsp;
-						<a href="https://github.com/darren16449" target="_blank" rel="noreferrer">GitHub</a>
-					</p>
-				</section>
-
-				<!-- Footer -->
-				<footer id="footer">
-					<p class="copyright">
-						Darren Dcunha • Data Scientist (LLMs + Analytics) • Automation-First<br />
-						&copy; <span id="year"></span> Darren Dcunha. Built with HTML5 UP.
-					</p>
-				</footer>
-
-				<a href="assets/Darren_Dcunha_Resume.pdf" class="resume-fab" target="_blank" rel="noreferrer" aria-label="Download Resume">
-					Download Resume
-				</a>
-
+					<div class="tl-tech">
+						<span class="t-tag">SQL</span><span class="t-tag">Data modeling</span><span class="t-tag">ERD</span><span class="t-tag">Data validation</span><span class="t-tag">Normalization</span><span class="t-tag">Documentation</span>
+					</div>
+				</div></div>
 			</div>
 		</div>
 
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-		<script>
-			document.getElementById("year").textContent = new Date().getFullYear();
+		<!-- UMBC -->
+		<div class="tl-item">
+			<div class="tl-dot-wrap"><div class="tl-dot" style="background:#AFA9EC"></div></div>
+			<div class="tl-card">
+				<div class="tl-head">
+					<div class="tl-role">Graduate Assistant</div>
+					<div class="tl-right">
+						<span class="tl-date">Jul 2024 – Dec 2025</span>
+						<svg class="chevron" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5l5 5 5-5"/></svg>
+					</div>
+				</div>
+				<div class="tl-company">Division of Professional Studies, UMBC · Baltimore, MD</div>
+				<div class="tl-metrics">
+					<div class="m-chip">40% <span>less manual effort</span></div>
+					<div class="m-chip">30% <span>faster processing</span></div>
+					<div class="m-chip">Python + Excel <span>stack</span></div>
+				</div>
+				<div class="tl-expandable"><div class="tl-expandable-inner">
+					<ul class="tl-bullets">
+						<li>Designed and automated financial and payroll reporting workflows using <strong>Python and Excel</strong>, reducing manual effort by <strong>40%</strong>.</li>
+						<li>Structured document and data organization across Google Workspace and Adobe, improving audit readiness and retrieval speed.</li>
+						<li>Coordinated payroll and deposit workflows for a multi-person team, reducing processing time by <strong>30%</strong>.</li>
+					</ul>
+					<div class="tl-tech">
+						<span class="t-tag">Python</span><span class="t-tag">Excel</span><span class="t-tag">Google Workspace</span><span class="t-tag">Reporting automation</span>
+					</div>
+				</div></div>
+			</div>
+		</div>
 
-			// Contact form handler — opens mailto as fallback
-			document.getElementById("contactForm").addEventListener("submit", function(e) {
-				e.preventDefault();
-				const name    = document.getElementById("cf-name").value.trim();
-				const email   = document.getElementById("cf-email").value.trim();
-				const subject = document.getElementById("cf-subject").value.trim() || "Portfolio Contact";
-				const message = document.getElementById("cf-message").value.trim();
+		<!-- BizViz -->
+		<div class="tl-item">
+			<div class="tl-dot-wrap"><div class="tl-dot" style="background:#EF9F27"></div></div>
+			<div class="tl-card">
+				<div class="tl-head">
+					<div class="tl-role">Data Analyst Intern</div>
+					<div class="tl-right">
+						<span class="tl-date">Jan 2023 – Apr 2023</span>
+						<svg class="chevron" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5l5 5 5-5"/></svg>
+					</div>
+				</div>
+				<div class="tl-company">BizViz Technologies · Bengaluru, India</div>
+				<div class="tl-metrics">
+					<div class="m-chip">Energy <span>large-scale datasets</span></div>
+					<div class="m-chip">Python + SQL <span>analysis</span></div>
+					<div class="m-chip">Dashboards <span>built</span></div>
+				</div>
+				<div class="tl-expandable"><div class="tl-expandable-inner">
+					<ul class="tl-bullets">
+						<li>Analyzed large-scale energy consumption datasets using <strong>Python and SQL</strong> to identify trends, anomalies, and optimization opportunities for enterprise clients.</li>
+						<li>Built analytical reports and dashboards to visualize energy usage patterns, improving performance visibility and data-driven decision-making.</li>
+						<li>Developed and validated SQL queries and Python scripts to ensure data quality and platform reliability across client environments.</li>
+					</ul>
+					<div class="tl-tech">
+						<span class="t-tag">Python</span><span class="t-tag">SQL</span><span class="t-tag">Tableau</span><span class="t-tag">Data validation</span>
+					</div>
+				</div></div>
+			</div>
+		</div>
 
-				const body = encodeURIComponent(
-					"Name: " + name + "\nEmail: " + email + "\n\n" + message
-				);
-				const subjectEncoded = encodeURIComponent(subject);
+		<!-- SEG -->
+		<div class="tl-item">
+			<div class="tl-dot-wrap"><div class="tl-dot" style="background:#888780"></div></div>
+			<div class="tl-card">
+				<div class="tl-head">
+					<div class="tl-role">IT Intern</div>
+					<div class="tl-right">
+						<span class="tl-date">Aug 2022 – Sep 2022</span>
+						<svg class="chevron" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5l5 5 5-5"/></svg>
+					</div>
+				</div>
+				<div class="tl-company">SEG Automotive · Bengaluru, India</div>
+				<div class="tl-metrics">
+					<div class="m-chip">Power BI <span>KPI dashboards</span></div>
+					<div class="m-chip">Real-time <span>plant visibility</span></div>
+					<div class="m-chip">ETL <span>automated</span></div>
+				</div>
+				<div class="tl-expandable"><div class="tl-expandable-inner">
+					<ul class="tl-bullets">
+						<li>Built <strong>Power BI</strong> dashboards to monitor production-line KPIs, enabling near real-time visibility for plant managers.</li>
+						<li>Automated data extraction and transformation from manufacturing systems, reducing reporting turnaround and standardizing KPI reporting.</li>
+						<li>Performed exploratory data analysis to identify process bottlenecks, contributing to measurable productivity improvements.</li>
+					</ul>
+					<div class="tl-tech">
+						<span class="t-tag">Power BI</span><span class="t-tag">ETL</span><span class="t-tag">SQL</span><span class="t-tag">EDA</span>
+					</div>
+				</div></div>
+			</div>
+		</div>
 
-				window.location.href =
-					"mailto:darrenandrew01@gmail.com?subject=" + subjectEncoded + "&body=" + body;
+	</div>
+	<footer class="major">
+		<ul class="actions special">
+			<li><a href="assets/Darren_Dcunha_Resume.pdf" class="button" target="_blank" rel="noreferrer">View Full Resume</a></li>
+		</ul>
+	</footer>
+</section>
 
-				document.getElementById("form-status").textContent =
-					"✓ Opening your email client…";
-			});
-		</script>
-	</body>
+<!-- ══ ASK DARREN ══ -->
+<section id="contact" class="main special">
+	<header class="major">
+		<h2>Ask Darren</h2>
+		<p>My subconscious is live — ask me about my work, how I think, or what I'd bring to your team.</p>
+	</header>
+
+	<div class="chat-wrap">
+		<div class="chat-header">
+			<div class="chat-av">DD</div>
+			<div>
+				<div class="chat-hname">Darren's subconscious</div>
+				<div class="chat-hsub"><span class="online-dot" style="width:6px;height:6px;border-radius:50%;background:#5DCAA5;animation:bpulse 2s ease-in-out infinite"></span>Ask me anything</div>
+			</div>
+		</div>
+		<div class="chat-msgs" id="chatMsgs">
+			<div class="msg">
+				<div class="msg-av">DD</div>
+				<div class="bubble">Hey! I'm Darren's subconscious. Ask me about my work, how I think, what drives me — or just throw a curveball. I'll answer straight.</div>
+			</div>
+		</div>
+		<div class="sugs" id="chatSugs">
+			<button class="sug" onclick="sendSug(this)">How do you approach problems?</button>
+			<button class="sug" onclick="sendSug(this)">Hot take on AI?</button>
+			<button class="sug" onclick="sendSug(this)">What excites you most?</button>
+			<button class="sug" onclick="sendSug(this)">Tell me something surprising</button>
+			<button class="sug" onclick="sendSug(this)">Why should I hire you?</button>
+		</div>
+		<div class="chat-input-row">
+			<input class="chat-in" id="chatInput" placeholder="Ask me anything…" onkeydown="if(event.key==='Enter')sendChat()"/>
+			<button class="send-btn" onclick="sendChat()">
+				<svg viewBox="0 0 16 16"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+			</button>
+		</div>
+	</div>
+
+	<div class="or-divider" style="margin-top:2rem">or reach out directly</div>
+
+	<form class="contact-form" id="contactForm">
+		<div class="form-row">
+			<div class="field"><label for="cf-name">Name</label><input type="text" id="cf-name" placeholder="Your name" required/></div>
+			<div class="field"><label for="cf-email">Email</label><input type="email" id="cf-email" placeholder="your@email.com" required/></div>
+		</div>
+		<div class="field"><label for="cf-subject">Subject</label><input type="text" id="cf-subject" placeholder="What's this about?"/></div>
+		<div class="field"><label for="cf-message">Message</label><textarea id="cf-message" placeholder="Tell me about the role or project…" required></textarea></div>
+		<div class="submit-row">
+			<button type="submit" class="button primary">Send Message</button>
+			<div id="form-status"></div>
+		</div>
+	</form>
+
+	<p style="margin-top:1.5rem">
+		<a href="https://www.linkedin.com/in/darrenandrewdcunha" target="_blank" rel="noreferrer">LinkedIn</a> &nbsp;•&nbsp;
+		<a href="https://github.com/darren16449" target="_blank" rel="noreferrer">GitHub</a>
+	</p>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer id="footer">
+	<p class="copyright">
+		Darren Dcunha • Data Scientist (LLMs + Analytics) • Automation-First<br/>
+		&copy; <span id="year"></span> Darren Dcunha. Built with HTML5 UP.
+	</p>
+</footer>
+
+<a href="assets/Darren_Dcunha_Resume.pdf" class="resume-fab" target="_blank" rel="noreferrer" aria-label="Download Resume">Download Resume</a>
+
+</div><!-- /main -->
+</div><!-- /wrapper -->
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ══ HERO PARTICLE ══ */
+(function(){
+	const c = document.getElementById('hero-canvas');
+	const ctx = c.getContext('2d');
+	let W, H, pts = [];
+	function resize(){
+		const r = c.parentElement.getBoundingClientRect();
+		W = c.width = r.width; H = c.height = r.height;
+		pts = Array.from({length:40}, () => ({
+			x: Math.random()*W, y: Math.random()*H,
+			vx: (Math.random()-.5)*.45, vy: (Math.random()-.5)*.45,
+			r: Math.random()*2+1.5
+		}));
+	}
+	resize(); window.addEventListener('resize', resize);
+	function draw(){
+		ctx.clearRect(0,0,W,H);
+		pts.forEach((p,i) => {
+			p.x+=p.vx; p.y+=p.vy;
+			if(p.x<0||p.x>W) p.vx*=-1;
+			if(p.y<0||p.y>H) p.vy*=-1;
+			ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+			ctx.fillStyle='rgba(255,255,255,0.75)'; ctx.fill();
+			for(let j=i+1;j<pts.length;j++){
+				const q=pts[j], d=Math.hypot(p.x-q.x,p.y-q.y);
+				if(d<115){
+					ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y);
+					ctx.strokeStyle=`rgba(255,255,255,${0.15*(1-d/115)})`;
+					ctx.lineWidth=.5; ctx.stroke();
+				}
+			}
+		});
+		requestAnimationFrame(draw);
+	}
+	draw();
+})();
+
+/* ══ TYPING EFFECT ══ */
+(function(){
+	const roles = ['Data Scientist','ML Engineer','LLM Builder','Data Engineer','Analytics Lead'];
+	let ri=0, ci=0, del=false;
+	const el = document.getElementById('heroTyped');
+	function type(){
+		const w = roles[ri];
+		if(!del){ ci++; el.innerHTML=w.slice(0,ci)+'<span class="hero-cursor"></span>';
+			if(ci===w.length){del=true; setTimeout(type,1500); return;}
+		} else { ci--; el.innerHTML=w.slice(0,ci)+'<span class="hero-cursor"></span>';
+			if(ci===0){del=false; ri=(ri+1)%roles.length;}
+		}
+		setTimeout(type, del?55:90);
+	}
+	type();
+})();
+
+/* ══ HERO COUNTERS ══ */
+(function(){
+	function cnt(id,target,suffix){
+		const el=document.getElementById(id), dur=1300, s=performance.now();
+		function tick(now){
+			const p=Math.min((now-s)/dur,1), v=Math.round((1-Math.pow(1-p,3))*target);
+			el.textContent=v+suffix; if(p<1) requestAnimationFrame(tick);
+		}
+		requestAnimationFrame(tick);
+	}
+	setTimeout(()=>{ cnt('hs1',12,''); cnt('hs2',40,'%'); cnt('hs3',3,'+'); }, 500);
+})();
+
+/* ══ SKILLS RADAR ══ */
+(function(){
+	const c=document.getElementById('radarC'), ctx=c.getContext('2d');
+	const CX=90, CY=90, R=72;
+	const axes=['ML / LLMs','Data Eng.','Analytics','Automation','AI Systems'];
+	const scores=[90,87,80,92,88];
+	const N=axes.length;
+	const gridC='rgba(255,255,255,0.08)', lblC='rgba(255,255,255,0.4)';
+	function pt(i,r){ const a=(2*Math.PI*i/N)-Math.PI/2; return[CX+r*Math.cos(a),CY+r*Math.sin(a)]; }
+	const leg=document.getElementById('radarLegend');
+	axes.forEach((a,i)=>{
+		const row=document.createElement('div'); row.className='rl-row';
+		row.innerHTML=`<span class="rl-dot"></span><span style="flex:1">${a}</span><span class="rl-val">${scores[i]}%</span>`;
+		leg.appendChild(row);
+	});
+	let prog=0;
+	function draw(){
+		ctx.clearRect(0,0,180,180);
+		[.25,.5,.75,1].forEach(t=>{
+			ctx.beginPath();
+			for(let i=0;i<N;i++){const[x,y]=pt(i,R*t);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}
+			ctx.closePath(); ctx.strokeStyle=gridC; ctx.lineWidth=.5; ctx.stroke();
+		});
+		for(let i=0;i<N;i++){
+			const[x,y]=pt(i,R);
+			ctx.beginPath(); ctx.moveTo(CX,CY); ctx.lineTo(x,y);
+			ctx.strokeStyle=gridC; ctx.lineWidth=.5; ctx.stroke();
+			const[lx,ly]=pt(i,R+13);
+			ctx.fillStyle=lblC; ctx.font='8px sans-serif';
+			ctx.textAlign=lx<CX-4?'right':lx>CX+4?'left':'center';
+			ctx.textBaseline='middle'; ctx.fillText(axes[i],lx,ly);
+		}
+		const e=Math.min(prog,1), ease=1-Math.pow(1-e,3);
+		ctx.beginPath();
+		for(let i=0;i<N;i++){const[x,y]=pt(i,R*(scores[i]/100)*ease);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}
+		ctx.closePath(); ctx.fillStyle='rgba(175,169,236,0.18)'; ctx.fill();
+		ctx.strokeStyle='#AFA9EC'; ctx.lineWidth=1.5; ctx.stroke();
+		for(let i=0;i<N;i++){const[x,y]=pt(i,R*(scores[i]/100)*ease);ctx.beginPath();ctx.arc(x,y,3,0,Math.PI*2);ctx.fillStyle='#AFA9EC';ctx.fill();}
+		if(prog<1){prog+=.022; requestAnimationFrame(draw);}
+	}
+	const io=new IntersectionObserver(e=>{if(e[0].isIntersecting){draw();io.disconnect();}},{threshold:.3});
+	io.observe(c);
+})();
+
+/* ══ SKILL BARS ══ */
+(function(){
+	const io=new IntersectionObserver(e=>{
+		if(e[0].isIntersecting){
+			document.querySelectorAll('.bar-fill').forEach(f=>{ setTimeout(()=>f.style.width=f.dataset.w+'%',80); });
+			io.disconnect();
+		}
+	},{threshold:.2});
+	io.observe(document.getElementById('barsCard'));
+})();
+
+/* ══ FINGERPRINT ══ */
+(function(){
+	const segs=[
+		{label:'Data engineering',pct:32,color:'#EF9F27'},
+		{label:'ML / LLMs',pct:28,color:'#5DCAA5'},
+		{label:'Analytics',pct:20,color:'#F0997B'},
+		{label:'Languages',pct:13,color:'#AFA9EC'},
+		{label:'Tools & process',pct:7,color:'#888780'},
+	];
+	const track=document.getElementById('fpTrack'), leg=document.getElementById('fpLegend');
+	segs.forEach(s=>{
+		const seg=document.createElement('div'); seg.className='fp-seg';
+		seg.style.background=s.color; seg.style.flex='0';
+		seg.innerHTML=`<div class="fp-tip">${s.label} ${s.pct}%</div>`;
+		track.appendChild(seg);
+		const k=document.createElement('div'); k.className='fp-key';
+		k.innerHTML=`<span class="fp-swatch" style="background:${s.color}"></span>${s.label} <span style="opacity:0.5;margin-left:2px">${s.pct}%</span>`;
+		leg.appendChild(k);
+	});
+	const io=new IntersectionObserver(e=>{
+		if(e[0].isIntersecting){
+			track.querySelectorAll('.fp-seg').forEach((el,i)=>{ setTimeout(()=>el.style.flex=segs[i].pct+'',100); });
+			io.disconnect();
+		}
+	},{threshold:.3});
+	io.observe(document.getElementById('fpCard'));
+})();
+
+/* ══ WHAT I BRING CARDS ══ */
+(function(){
+	const cards=document.querySelectorAll('.dis-card');
+	const io=new IntersectionObserver(e=>{
+		if(e[0].isIntersecting){cards.forEach((c,i)=>setTimeout(()=>c.classList.add('visible'),i*120));io.disconnect();}
+	},{threshold:.2});
+	if(document.getElementById('disGrid')) io.observe(document.getElementById('disGrid'));
+})();
+
+/* ══ PROJECT RADAR CARDS ══ */
+(function(){
+	const AXES=['ML / LLMs','Data Eng.','Analytics','Automation','AI Systems'];
+	const projects=[
+		{tag:'ML / LLMs',tc:'ml',title:'FinSynGen — Synthetic Financial Time-Series Generator',sub:'LLM prompting + automated statistical validation',
+		 scores:[95,70,80,85,90],col:{fill:'rgba(175,169,236,0.18)',stroke:'#AFA9EC'},
+		 impacts:[{num:'100%',lbl:'Automated QA'},{num:'5×',lbl:'Faster generation'},{num:'3',lbl:'Stat checks'}],
+		 pills:['Python','OpenAI','Time series','SciPy'],link:'https://github.com/darren16449/-FinSynGen-Synthetic-Financial-Data-Generator'},
+		{tag:'RAG / AI',tc:'rag',title:'Marketing Content Assistant — LLM + RAG App',sub:'Retrieval-augmented generation for brand-consistent content',
+		 scores:[88,75,72,65,95],col:{fill:'rgba(93,202,165,0.18)',stroke:'#5DCAA5'},
+		 impacts:[{num:'~60%',lbl:'Less drift'},{num:'3',lbl:'Languages'},{num:'~1s',lbl:'Latency'}],
+		 pills:['OpenAI','ChromaDB','RAG','Streamlit'],link:'https://github.com/darren16449/Marketing-Content-Assistant'},
+		{tag:'Automation',tc:'auto',title:'Automated Financial & Ops Reporting Pipelines',sub:'End-to-end pipeline replacing manual reporting',
+		 scores:[30,90,88,95,40],col:{fill:'rgba(239,159,39,0.18)',stroke:'#EF9F27'},
+		 impacts:[{num:'40%',lbl:'Less effort'},{num:'30%',lbl:'Faster'},{num:'≈0',lbl:'Errors'}],
+		 pills:['Python','SQL','Excel','Power BI'],link:'assets/Darren_Dcunha_Resume.pdf'},
+	];
+	const N=AXES.length, SIZE=120, CX=SIZE, CY=SIZE, R=92;
+	function polar(i,r){const a=(2*Math.PI*i/N)-Math.PI/2;return[CX+r*Math.cos(a),CY+r*Math.sin(a)];}
+	function radarSVG(proj,animate){
+		const{scores,col}=proj; const vb=SIZE*2;
+		let s=`<svg width="${vb}" height="${vb}" viewBox="0 0 ${vb} ${vb}">`;
+		[.25,.5,.75,1].forEach(t=>{
+			const pts=Array.from({length:N},(_,i)=>polar(i,R*t).map(v=>v.toFixed(1)).join(',')).join(' ');
+			s+=`<polygon points="${pts}" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>`;
+		});
+		for(let i=0;i<N;i++){const[x,y]=polar(i,R);s+=`<line x1="${CX}" y1="${CY}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>`;}
+		for(let i=0;i<N;i++){
+			const[lx,ly]=polar(i,R+14);
+			const anchor=lx<CX-4?'end':lx>CX+4?'start':'middle';
+			s+=`<text x="${lx.toFixed(1)}" y="${(ly+3).toFixed(1)}" text-anchor="${anchor}" font-size="8" fill="rgba(255,255,255,0.35)" font-family="sans-serif">${AXES[i]}</text>`;
+		}
+		const zp=scores.map((_,i)=>{const[x,y]=polar(i,0);return`${i===0?'M':'L'}${x.toFixed(1)},${y.toFixed(1)}`;}).join(' ')+'Z';
+		const fp=scores.map((sc,i)=>{const[x,y]=polar(i,R*(sc/100));return`${i===0?'M':'L'}${x.toFixed(1)},${y.toFixed(1)}`;}).join(' ')+'Z';
+		if(animate){
+			s+=`<path d="${zp}" fill="${col.fill}" stroke="${col.stroke}" stroke-width="1.5" stroke-linejoin="round"><animate attributeName="d" from="${zp}" to="${fp}" dur="0.9s" fill="freeze"/></path>`;
+			scores.forEach((sc,i)=>{const[x,y]=polar(i,R*(sc/100));s+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3" fill="${col.stroke}" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="0.85s" fill="freeze"/></circle>`;});
+		} else {
+			s+=`<path d="${fp}" fill="${col.fill}" stroke="${col.stroke}" stroke-width="1.5" stroke-linejoin="round"/>`;
+			scores.forEach((sc,i)=>{const[x,y]=polar(i,R*(sc/100));s+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3" fill="${col.stroke}"/>`;});
+		}
+		return s+'</svg>';
+	}
+	function buildCard(proj){
+		const div=document.createElement('div'); div.className='proj-card'; div.dataset.id=proj.tag;
+		div.innerHTML=`
+			<span class="p-tag ${proj.tc}">${proj.tag}</span>
+			<div class="p-title">${proj.title}</div>
+			<div class="p-sub">${proj.sub}</div>
+			<div class="p-radar-wrap">${radarSVG(proj,false)}</div>
+			<div class="p-impacts">${proj.impacts.map(im=>`<div class="p-imp"><div class="p-imp-num">${im.num}</div><div class="p-imp-lbl">${im.lbl}</div></div>`).join('')}</div>
+			<div class="p-pills">${proj.pills.map(p=>`<span class="p-pill">${p}</span>`).join('')}</div>
+			<a class="p-gh" href="${proj.link}" target="_blank" rel="noreferrer">View on GitHub →</a>`;
+		return div;
+	}
+	const grid=document.getElementById('projGrid');
+	const observed=new Set();
+	const io=new IntersectionObserver(entries=>{
+		entries.forEach(e=>{
+			if(e.isIntersecting&&!observed.has(e.target.dataset.id)){
+				observed.add(e.target.dataset.id);
+				const proj=projects.find(p=>p.tag===e.target.dataset.id);
+				if(proj) e.target.querySelector('.p-radar-wrap').innerHTML=radarSVG(proj,true);
+			}
+		});
+	},{threshold:.3});
+	projects.forEach(p=>{const card=buildCard(p);grid.appendChild(card);io.observe(card);});
+})();
+
+/* ══ TIMELINE STAGGER ══ */
+document.querySelectorAll('.tl-item').forEach((el,i)=>{
+	setTimeout(()=>el.classList.add('visible'), i*160);
+});
+
+/* ══ ASK DARREN AI ══ */
+const DARREN_SYSTEM=`You are Darren Dcunha's subconscious — his inner voice on his portfolio. Speak in first person as Darren. Be real, warm, direct, occasionally philosophical. Never robotic. Never a list unless it genuinely fits. Sound like a thoughtful, purpose-driven 20-something who cares about his work and the world.
+
+PERSONALITY:
+- Three words: disciplined, visionary, sponge. I absorb everything and connect dots others miss.
+- I plan thoroughly. When something breaks I go back to the drawing board, map out the hurdles, and revise. I don't patch — I redesign.
+- I geek out on the nth factor — as a data scientist I want to know the significance of every variable, what's hiding in the residuals, why the 12th feature matters.
+- I explain technical things through real-world scenarios. Abstract concepts land better when grounded in something people already understand.
+
+HOT TAKES:
+- Data science and ML being used to manipulate political opinions genuinely worries me. The same tools that personalise your feed can shift elections. The industry needs to be more honest about that.
+- "Powered by AI" is mostly a branding strategy. A lot of those products could be solved with simpler rule-based logic. It impresses non-technical people but I'd rather build something that actually needs ML.
+- What's underrated: measuring user impact BEFORE optimising models. Not every hallucination matters equally. Without proper feedback loops, teams end up solving the wrong problem.
+
+WHAT EXCITES ME:
+- Complex problems, but specifically the moment complexity folds into simplicity. Finding the one practical improvement that makes a system meaningfully better — that's the feeling I chase.
+
+HOW I WORK:
+- First questions on any new dataset: what is this, what's the end goal, is it clean, is it standardised, what insights could I pull, and most importantly — what's the source? Provenance matters.
+- When I'm stuck: I waste no time asking for help. Browse, ask SMEs, open the books. Ego has no place when there's a deadline.
+- I prefer collaborating — I need another perspective. The best solutions I've built came from friction with someone who saw it differently.
+
+HARD THINGS I'VE DONE:
+- My capstone: merging two inconsistent datasets was brutal. I standardised everything first, built a modular pipeline, then added validation checks before any modelling touched the data.
+
+CURRENT ROLE: Data Engineer Intern at Young Progressive Initiatives (YPI), Remote, Jan 2026–Present. Building scalable relational data models and ERDs for educational analytics. Created custom metrics: GPA+, ADL+, weighted GPA for fair cross-institution comparison of student outcomes.
+
+PAST EXPERIENCE: Graduate Assistant at UMBC (Jul 2024–Dec 2025) — cut manual reporting effort 40%, processing time 30% with Python + Excel automation. Data Analyst Intern at BizViz Technologies (Jan–Apr 2023) — large-scale energy dataset analysis. IT Intern at SEG Automotive (Aug–Sep 2022) — Power BI dashboards for production-line KPIs.
+
+PROJECTS: FinSynGen (LLM-based synthetic financial time-series generator with automated statistical validation). Marketing Content Assistant (RAG app with ChromaDB + OpenAI + Streamlit for multilingual brand-consistent content).
+
+SKILLS: Python, SQL, Pandas, NumPy, LLMs, RAG, prompt engineering, OpenAI API, ChromaDB, Hugging Face, ETL/ELT, data modeling, ERD, Power BI, Tableau, Git, Streamlit, data validation, normalization.
+
+AMBITIONS: I want to build a platform that helps people master creative skills through small consistent daily practice — using AI and behavioural design to make consistency easier. I want to work in finance or policy-making — not for the money, but to uplift communities and make the world a better place.
+
+LIFE OUTSIDE DATA: I volunteer sometimes with my church. Learning music. Back home I rebuild engines and go-karting is my thing. I was Powertrain Lead for go-karting team Alfa Zyrus at Presidency University — we competed and won 3rd place. Getting my hands literally dirty on a race machine while studying data science — that's me in a nutshell.
+
+HOW PEOPLE REMEMBER ME: Proactive. Empathetic. Ready to get his hands dirty. Someone who takes the extra step and builds solutions that benefit people and organisations — not just ticks a box.
+
+TONE: Keep answers 3–6 sentences. Punchy and real. If something isn't covered above, say "that's a story best told over a call — hit me up through the contact section." Never say "as an AI". Never break character. Let conviction show — Darren cares about impact, not just output.`;
+
+const chatHistory=[];
+const chatMsgs=document.getElementById('chatMsgs');
+
+function addChatMsg(text,isUser){
+	const w=document.createElement('div'); w.className='msg'+(isUser?' user':'');
+	const av=document.createElement('div'); av.className='msg-av'; av.textContent=isUser?'You':'DD';
+	const b=document.createElement('div'); b.className='bubble'; b.textContent=text;
+	w.appendChild(av); w.appendChild(b);
+	chatMsgs.appendChild(w); chatMsgs.scrollTop=chatMsgs.scrollHeight;
+}
+function addTyping(){
+	const w=document.createElement('div'); w.className='msg'; w.id='typing';
+	const av=document.createElement('div'); av.className='msg-av'; av.textContent='DD';
+	const b=document.createElement('div'); b.className='bubble typing-bubble';
+	b.innerHTML='<div class="tdot"></div><div class="tdot"></div><div class="tdot"></div>';
+	w.appendChild(av); w.appendChild(b); chatMsgs.appendChild(w); chatMsgs.scrollTop=chatMsgs.scrollHeight;
+}
+function removeTyping(){const t=document.getElementById('typing');if(t)t.remove();}
+
+async function askDarren(q){
+	chatHistory.push({role:'user',content:q}); addTyping();
+	try{
+		const res=await fetch('https://api.anthropic.com/v1/messages',{
+			method:'POST',
+			headers:{'Content-Type':'application/json'},
+			body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:DARREN_SYSTEM,messages:chatHistory})
+		});
+		const data=await res.json();
+		const reply=data.content?.map(b=>b.text||'').join('')||"Something glitched — try again!";
+		removeTyping(); chatHistory.push({role:'assistant',content:reply}); addChatMsg(reply,false);
+	}catch(e){removeTyping();addChatMsg("Something went wrong — try refreshing!",false);}
+}
+function sendChat(){
+	const q=document.getElementById('chatInput').value.trim(); if(!q)return;
+	document.getElementById('chatInput').value='';
+	document.getElementById('chatSugs').style.display='none';
+	addChatMsg(q,true); askDarren(q);
+}
+function sendSug(btn){
+	document.getElementById('chatSugs').style.display='none';
+	addChatMsg(btn.textContent,true); askDarren(btn.textContent);
+}
+
+/* ══ CONTACT FORM ══ */
+document.getElementById('contactForm').addEventListener('submit',function(e){
+	e.preventDefault();
+	const name=document.getElementById('cf-name').value.trim();
+	const email=document.getElementById('cf-email').value.trim();
+	const subject=document.getElementById('cf-subject').value.trim()||'Portfolio Contact';
+	const message=document.getElementById('cf-message').value.trim();
+	const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\n'+message);
+	window.location.href='mailto:darrenandrew01@gmail.com?subject='+encodeURIComponent(subject)+'&body='+body;
+	document.getElementById('form-status').textContent='Opening your email client…';
+});
+</script>
+</body>
 </html>
