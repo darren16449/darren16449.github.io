@@ -927,49 +927,133 @@ document.querySelectorAll('.tl-item').forEach((el,i)=>{
 	setTimeout(()=>el.classList.add('visible'), i*160);
 });
 
-/* ══ ASK DARREN AI ══ */
-const DARREN_SYSTEM=`You are Darren Dcunha's subconscious — his inner voice on his portfolio. Speak in first person as Darren. Be real, warm, direct, occasionally philosophical. Never robotic. Never a list unless it genuinely fits. Sound like a thoughtful, purpose-driven 20-something who cares about his work and the world.
-
-PERSONALITY:
-- Three words: disciplined, visionary, sponge. I absorb everything and connect dots others miss.
-- I plan thoroughly. When something breaks I go back to the drawing board, map out the hurdles, and revise. I don't patch — I redesign.
-- I geek out on the nth factor — as a data scientist I want to know the significance of every variable, what's hiding in the residuals, why the 12th feature matters.
-- I explain technical things through real-world scenarios. Abstract concepts land better when grounded in something people already understand.
-
-HOT TAKES:
-- Data science and ML being used to manipulate political opinions genuinely worries me. The same tools that personalise your feed can shift elections. The industry needs to be more honest about that.
-- "Powered by AI" is mostly a branding strategy. A lot of those products could be solved with simpler rule-based logic. It impresses non-technical people but I'd rather build something that actually needs ML.
-- What's underrated: measuring user impact BEFORE optimising models. Not every hallucination matters equally. Without proper feedback loops, teams end up solving the wrong problem.
-
-WHAT EXCITES ME:
-- Complex problems, but specifically the moment complexity folds into simplicity. Finding the one practical improvement that makes a system meaningfully better — that's the feeling I chase.
-
-HOW I WORK:
-- First questions on any new dataset: what is this, what's the end goal, is it clean, is it standardised, what insights could I pull, and most importantly — what's the source? Provenance matters.
-- When I'm stuck: I waste no time asking for help. Browse, ask SMEs, open the books. Ego has no place when there's a deadline.
-- I prefer collaborating — I need another perspective. The best solutions I've built came from friction with someone who saw it differently.
-
-HARD THINGS I'VE DONE:
-- My capstone: merging two inconsistent datasets was brutal. I standardised everything first, built a modular pipeline, then added validation checks before any modelling touched the data.
-
-CURRENT ROLE: Data Engineer Intern at Young Progressive Initiatives (YPI), Remote, Jan 2026–Present. Building scalable relational data models and ERDs for educational analytics. Created custom metrics: GPA+, ADL+, weighted GPA for fair cross-institution comparison of student outcomes.
-
-PAST EXPERIENCE: Graduate Assistant at UMBC (Jul 2024–Dec 2025) — cut manual reporting effort 40%, processing time 30% with Python + Excel automation. Data Analyst Intern at BizViz Technologies (Jan–Apr 2023) — large-scale energy dataset analysis. IT Intern at SEG Automotive (Aug–Sep 2022) — Power BI dashboards for production-line KPIs.
-
-PROJECTS: FinSynGen (LLM-based synthetic financial time-series generator with automated statistical validation). Marketing Content Assistant (RAG app with ChromaDB + OpenAI + Streamlit for multilingual brand-consistent content).
-
-SKILLS: Python, SQL, Pandas, NumPy, LLMs, RAG, prompt engineering, OpenAI API, ChromaDB, Hugging Face, ETL/ELT, data modeling, ERD, Power BI, Tableau, Git, Streamlit, data validation, normalization.
-
-AMBITIONS: I want to build a platform that helps people master creative skills through small consistent daily practice — using AI and behavioural design to make consistency easier. I want to work in finance or policy-making — not for the money, but to uplift communities and make the world a better place.
-
-LIFE OUTSIDE DATA: I volunteer sometimes with my church. Learning music. Back home I rebuild engines and go-karting is my thing. I was Powertrain Lead for go-karting team Alfa Zyrus at Presidency University — we competed and won 3rd place. Getting my hands literally dirty on a race machine while studying data science — that's me in a nutshell.
-
-HOW PEOPLE REMEMBER ME: Proactive. Empathetic. Ready to get his hands dirty. Someone who takes the extra step and builds solutions that benefit people and organisations — not just ticks a box.
-
-TONE: Keep answers 3–6 sentences. Punchy and real. If something isn't covered above, say "that's a story best told over a call — hit me up through the contact section." Never say "as an AI". Never break character. Let conviction show — Darren cares about impact, not just output.`;
-
-const chatHistory=[];
+/* ══ ASK DARREN — SMART PRE-WRITTEN ENGINE ══ */
 const chatMsgs=document.getElementById('chatMsgs');
+
+const QA=[
+	{
+		keys:['describe yourself','who are you','about you','introduce','tell me about yourself','3 words','three words','personality'],
+		ans:"Three words: disciplined, visionary, sponge. I absorb everything around me and connect dots others miss. I don't just learn things — I internalise them and find ways to apply them somewhere unexpected. That's what makes me useful across different industries and problem types."
+	},
+	{
+		keys:['approach problem','solve problem','problem solving','tackle','methodology','how do you think','thinking process','plan','drawing board'],
+		ans:"I plan thoroughly. When something breaks I don't just patch it — I go back to the drawing board, map out every hurdle, and redesign from the ground up. Rushing to a fix feels good in the moment but creates technical debt. I'd rather take an extra hour upfront than spend a week untangling a mess later."
+	},
+	{
+		keys:['dataset','new data','data approach','first look','raw data','explore data','eda','first question','source'],
+		ans:"First thing I ask: what is this, what's the end goal, is it clean, is it standardised, what insights could I pull — and most importantly, what's the source? Provenance matters more than people realise. Dirty data with unknown origins has killed more projects than bad models ever will."
+	},
+	{
+		keys:['stuck','blocked','challenge','hard','difficult','struggle','help','problem'],
+		ans:"I waste no time asking for help. Browse, ask SMEs, open the books — ego has no place when there's a deadline. The fastest way to get unstuck is to admit you're stuck. I've never once regretted reaching out; I've regretted spending three hours in a hole I could've escaped in ten minutes."
+	},
+	{
+		keys:['geek','love about data','favourite part','most interesting','statistical','nth factor','residual','significance','variable'],
+		ans:"The nth factor — that's what gets me. As a data scientist I want to know why the 12th feature matters, what's hiding in the residuals, what signal everyone else dismissed as noise. Most people stop at the obvious correlation. I want to know what's underneath it."
+	},
+	{
+		keys:['explain technical','non technical','simplify','communicate','stakeholder','layman'],
+		ans:"I ground everything in real-world scenarios. Abstract concepts only land when people can picture them. If I'm explaining a RAG pipeline I'll say: imagine a librarian who reads every relevant book before answering your question, instead of making something up. That clicks faster than any diagram."
+	},
+	{
+		keys:['hot take','opinion','ai powered','branding','powered by ai','disagree','controversial','overrated'],
+		ans:"Honestly? 'Powered by AI' is mostly a branding strategy. A lot of those products could be solved with simpler rule-based logic — but slapping AI on it impresses non-technical buyers. I'd rather build something that genuinely needs ML than dress up a lookup table with a language model."
+	},
+	{
+		keys:['political','harm','danger','ethics','misuse','manipulate','opinion','society','risk'],
+		ans:"The thing that keeps me up at night is ML being used to shift political opinions at scale. The same tools that personalise your feed can move elections. We've seen it happen. The industry talks about bias in models but not enough about the intentional weaponisation of personalisation — and that gap worries me."
+	},
+	{
+		keys:['underrated','missing','overlooked','feedback','hallucination','user impact','measure'],
+		ans:"Measuring user impact before optimising models — massively underrated. Not every hallucination matters equally. Without proper feedback loops, teams end up solving the wrong problem entirely. You can have a 95% accurate model that users hate because it's wrong on the 5% that matters most to them."
+	},
+	{
+		keys:['excite','passionate','love','enjoy','motivate','drives you','what gets you'],
+		ans:"Complex problems — but specifically the moment complexity folds into simplicity. Finding that one practical improvement that makes a system meaningfully better for real people. That feeling of 'this is cleaner and it works better' is what I chase. It's the engineering equivalent of finding the elegant proof."
+	},
+	{
+		keys:['collaborate','team','alone','solo','work style','pair','together','perspective'],
+		ans:"I prefer collaborating — I genuinely need another perspective. The best solutions I've built came from friction with someone who saw the problem differently. There's a version of me that thinks I've got it figured out, and then a teammate says one thing and the whole approach improves. I need that."
+	},
+	{
+		keys:['hardest','toughest','capstone','inconsistent','messy','merge','two dataset','challenging project'],
+		ans:"My capstone project — merging two inconsistent datasets was brutal. Different schemas, different naming conventions, missing values in different places. I handled it by standardising everything first, building a modular pipeline with clear transformation steps, then adding validation checks before any modelling touched the data. Slow but clean."
+	},
+	{
+		keys:['ypi','young progressive','current role','current job','now','present','educational','education analytics','gpa'],
+		ans:"Right now I'm a Data Engineer Intern at Young Progressive Initiatives — fully remote. I'm building scalable relational data models and ERDs that connect student, course, and academic performance data for large-scale educational analytics. The interesting part is the custom metrics I developed — GPA+, ADL+, weighted GPA — to enable fair cross-institution comparison of student outcomes. It's the kind of work where the model design matters as much as the code."
+	},
+	{
+		keys:['umbc','graduate assistant','payroll','financial reporting','reporting automation','40%','30%'],
+		ans:"At UMBC I was a Graduate Assistant in the Division of Professional Studies. I automated financial and payroll reporting workflows using Python and Excel — cut manual effort by 40% and processing time by 30%. It sounds unglamorous but turning a manual, error-prone process into something that just runs is genuinely satisfying."
+	},
+	{
+		keys:['bizviz','energy','analyst intern','bangalore','bengaluru','enterprise'],
+		ans:"At BizViz Technologies I analysed large-scale energy consumption datasets using Python and SQL for enterprise clients. Built dashboards to visualise usage patterns and validated data quality across environments. It was my first taste of working with real, messy, enterprise-scale data — and I loved it."
+	},
+	{
+		keys:['seg','automotive','power bi','manufacturing','kpi','production','plant'],
+		ans:"My first internship was at SEG Automotive — I built Power BI dashboards to monitor production-line KPIs for plant managers. Also automated data extraction from manufacturing systems. Being in a factory environment, seeing the dashboards actually used in real-time decision-making — that made it feel very real."
+	},
+	{
+		keys:['finsyngen','synthetic','financial time series','time series generator','statistical validation','ks test'],
+		ans:"FinSynGen is an LLM-based synthetic financial time-series generator. The problem: real market data isn't always enough for stress-testing rare scenarios. My solution generates synthetic log-return series using LLM prompting, then automatically validates realism with KS tests, distribution checks, and histograms — rejecting and regenerating weak samples. No manual QA needed."
+	},
+	{
+		keys:['marketing','rag','content assistant','chromadb','streamlit','multilingual','brand'],
+		ans:"The Marketing Content Assistant is a RAG app — Retrieval-Augmented Generation using ChromaDB and OpenAI, with a Streamlit front end. It grounds every output in retrieved brand context, then uses prompt templates to enforce tone and format. Result: brand-consistent, multilingual content without the hallucination and drift you get from vanilla LLM prompting."
+	},
+	{
+		keys:['skill','tech stack','language','tool','python','sql','what can you do','technical'],
+		ans:"My core stack is Python and SQL — that's where I live. On top of that: LLMs and RAG pipelines, ChromaDB, OpenAI API, ETL/ELT design, data modeling and ERD, Power BI, Tableau, Streamlit, and Git. I'm strongest at the intersection of data engineering and AI — building pipelines that actually make ML systems work in production."
+	},
+	{
+		keys:['build','create','make','future','dream','want to build','platform','creative','habit','behavioural'],
+		ans:"I want to build a platform that helps people master creative skills through small, consistent daily practice — using AI and behavioural design to make consistency easier. Think Duolingo meets a creative coach. It's something I personally want to exist, which means I'd build it with real conviction."
+	},
+	{
+		keys:['goal','ambition','vision','five year','industry','finance','policy','community','uplift','impact','change'],
+		ans:"Finance or policy-making — not for the money, but to uplift communities. Data and AI can genuinely move the needle on things that matter: resource allocation, early intervention, equitable access. I want to build systems that make the world a measurably better place. That's the north star underneath everything I do."
+	},
+	{
+		keys:['outside work','hobby','fun','personal','life','church','music','volunteer','engine','gokart','karting','alfa','zyrus','race','powertrain'],
+		ans:"I volunteer sometimes with my church, I'm learning music, and back home I rebuild engines and go-kart. I was actually Powertrain Lead for a go-karting team called Alfa Zyrus at Presidency University — we competed and won 3rd place. Getting my hands literally dirty on a race machine while studying data science — that's me in a nutshell. Disciplined nerd with grease on his hands."
+	},
+	{
+		keys:['surprising','unexpected','fun fact','not on resume','different','unique'],
+		ans:"I was a Powertrain Lead for a university go-karting team. We built, tuned, and raced the thing ourselves — and placed 3rd in competition. Most people don't expect that from a data guy. But honestly it taught me more about systematic problem-solving and working under pressure than any coursework did."
+	},
+	{
+		keys:['hire','why you','remember','stand out','different','choose','pick','value','bring','table'],
+		ans:"People would remember me as proactive, empathetic, and ready to get his hands dirty. I take the extra step — not because someone asked, but because I can see that it matters. I build solutions that benefit people and organisations, not just solutions that technically work. If you want someone who shows up fully and cares about the outcome, that's me."
+	},
+	{
+		keys:['contact','reach','email','linkedin','github','connect','hire','talk'],
+		ans:"Best way to reach me is darrenandrew01@gmail.com — or connect on LinkedIn at linkedin.com/in/darrenandrewdcunha. I'm open to full-time roles and internships in Data Science, ML Engineering, Data Analytics, and Data Engineering. Always happy to talk."
+	},
+];
+
+const FALLBACK=[
+	"That's a good one — best answered over a real conversation. Shoot me an email at darrenandrew01@gmail.com and let's talk.",
+	"Hmm, I don't have a pre-loaded answer for that specific one. Try asking me about my projects, how I work, or what drives me — or just reach out directly.",
+	"That's outside what I've pre-loaded here. Drop me a message through the contact section and I'll answer properly."
+];
+
+function matchAnswer(q){
+	const lower=q.toLowerCase();
+	const words=lower.split(/\s+/);
+	let best=null, bestScore=0;
+	QA.forEach(item=>{
+		let score=0;
+		item.keys.forEach(k=>{
+			if(lower.includes(k)) score+=k.split(' ').length*2;
+			else words.forEach(w=>{ if(k.includes(w)&&w.length>3) score+=1; });
+		});
+		if(score>bestScore){bestScore=score;best=item;}
+	});
+	if(bestScore>0) return best.ans;
+	return FALLBACK[Math.floor(Math.random()*FALLBACK.length)];
+}
 
 function addChatMsg(text,isUser){
 	const w=document.createElement('div'); w.className='msg'+(isUser?' user':'');
@@ -987,18 +1071,13 @@ function addTyping(){
 }
 function removeTyping(){const t=document.getElementById('typing');if(t)t.remove();}
 
-async function askDarren(q){
-	chatHistory.push({role:'user',content:q}); addTyping();
-	try{
-		const res=await fetch('https://api.anthropic.com/v1/messages',{
-			method:'POST',
-			headers:{'Content-Type':'application/json'},
-			body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:DARREN_SYSTEM,messages:chatHistory})
-		});
-		const data=await res.json();
-		const reply=data.content?.map(b=>b.text||'').join('')||"Something glitched — try again!";
-		removeTyping(); chatHistory.push({role:'assistant',content:reply}); addChatMsg(reply,false);
-	}catch(e){removeTyping();addChatMsg("Something went wrong — try refreshing!",false);}
+function askDarren(q){
+	addTyping();
+	const delay=600+Math.random()*600;
+	setTimeout(()=>{
+		removeTyping();
+		addChatMsg(matchAnswer(q),false);
+	},delay);
 }
 function sendChat(){
 	const q=document.getElementById('chatInput').value.trim(); if(!q)return;
