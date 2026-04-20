@@ -112,6 +112,7 @@
 	.p-tag.ml   { background: #EEEDFE; color: #3C3489; }
 	.p-tag.rag  { background: #E1F5EE; color: #085041; }
 	.p-tag.auto { background: #FAEEDA; color: #633806; }
+	.p-tag.ds   { background: #E6F1FB; color: #0C447C; }
 	.p-title { font-size: 0.85rem; font-weight: 600; line-height: 1.35; margin-bottom: 0.25rem; color: #2e2660; }
 	.p-sub   { font-size: 0.72rem; color: #6b6490; margin-bottom: 0.9rem; line-height: 1.4; }
 	.p-radar-wrap { display: flex; justify-content: center; margin-bottom: 0.9rem; }
@@ -123,6 +124,14 @@
 	.p-pill { font-size: 0.65rem; padding: 2px 7px; border: 1px solid #d4d0f5; border-radius: 4px; color: #6b6490; }
 	.p-gh { display: block; text-align: center; font-size: 0.72rem; font-weight: 600; color: #534AB7; text-decoration: none; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #ede9f8; }
 	.p-gh:hover { color: #3C3489; }
+
+	/* ── PROJECT STRENGTH BARS ── */
+	.str-bars { width: 100%; margin-bottom: 0.9rem; }
+	.str-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+	.str-lbl { font-size: 0.68rem; color: #6b6490; width: 80px; flex-shrink: 0; }
+	.str-track { flex: 1; height: 6px; background: #ede9f8; border-radius: 3px; overflow: hidden; }
+	.str-fill { height: 100%; border-radius: 3px; width: 0; }
+	.str-val { font-size: 0.65rem; font-weight: 600; color: #2e2660; width: 24px; text-align: right; flex-shrink: 0; }
 
 	/* ── WHAT I BRING ── */
 	.bring-headline {
@@ -329,7 +338,7 @@
 <header id="header" class="alt">
 	<canvas id="hero-canvas"></canvas>
 	<div style="position:relative;z-index:1">
-		<p class="hero-badge"><span class="bdot"></span>Open to new roles · Baltimore, MD</p>
+		<p class="hero-badge"><span class="bdot"></span>Open to new roles · Open to relocation</p>
 		<h1>Darren Dcunha</h1>
 		<p class="hero-typed" id="heroTyped"></p>
 		<p style="margin-top:0.5rem;opacity:0.7;font-size:0.9rem">I turn messy data into decisions — pipelines, LLM apps, and analytics that compound in value.</p>
@@ -402,16 +411,17 @@
 			<div class="skill-row"><span class="skill-name">SQL</span><div class="bar-track"><div class="bar-fill" style="background:#AFA9EC" data-w="88"></div></div><span class="bar-pct">88%</span></div>
 			<div class="skill-row"><span class="skill-name">Pandas / NumPy</span><div class="bar-track"><div class="bar-fill" style="background:#AFA9EC" data-w="85"></div></div><span class="bar-pct">85%</span></div>
 			<div class="grp-label">AI / ML / LLMs</div>
-			<div class="skill-row"><span class="skill-name">LLMs & RAG</span><div class="bar-track"><div class="bar-fill" style="background:#5DCAA5" data-w="90"></div></div><span class="bar-pct">90%</span></div>
-			<div class="skill-row"><span class="skill-name">Prompt engineering</span><div class="bar-track"><div class="bar-fill" style="background:#5DCAA5" data-w="88"></div></div><span class="bar-pct">88%</span></div>
-			<div class="skill-row"><span class="skill-name">OpenAI / ChromaDB</span><div class="bar-track"><div class="bar-fill" style="background:#5DCAA5" data-w="85"></div></div><span class="bar-pct">85%</span></div>
+			<div class="skill-row"><span class="skill-name">LLMs & RAG</span><div class="bar-track"><div class="bar-fill" style="background:#5DCAA5" data-w="94"></div></div><span class="bar-pct">94%</span></div>
+			<div class="skill-row"><span class="skill-name">Prompt engineering</span><div class="bar-track"><div class="bar-fill" style="background:#5DCAA5" data-w="92"></div></div><span class="bar-pct">92%</span></div>
+			<div class="skill-row"><span class="skill-name">HuggingFace models</span><div class="bar-track"><div class="bar-fill" style="background:#5DCAA5" data-w="88"></div></div><span class="bar-pct">88%</span></div>
+			<div class="skill-row"><span class="skill-name">OpenAI / ChromaDB</span><div class="bar-track"><div class="bar-fill" style="background:#5DCAA5" data-w="87"></div></div><span class="bar-pct">87%</span></div>
 			<div class="grp-label">Data engineering</div>
-			<div class="skill-row"><span class="skill-name">Pipeline automation</span><div class="bar-track"><div class="bar-fill" style="background:#EF9F27" data-w="92"></div></div><span class="bar-pct">92%</span></div>
-			<div class="skill-row"><span class="skill-name">Data modeling / ERD</span><div class="bar-track"><div class="bar-fill" style="background:#EF9F27" data-w="87"></div></div><span class="bar-pct">87%</span></div>
-			<div class="skill-row"><span class="skill-name">ETL / ELT</span><div class="bar-track"><div class="bar-fill" style="background:#EF9F27" data-w="85"></div></div><span class="bar-pct">85%</span></div>
+			<div class="skill-row"><span class="skill-name">Pipeline automation</span><div class="bar-track"><div class="bar-fill" style="background:#1D9E75" data-w="92"></div></div><span class="bar-pct">92%</span></div>
+			<div class="skill-row"><span class="skill-name">Data modeling / ERD</span><div class="bar-track"><div class="bar-fill" style="background:#1D9E75" data-w="87"></div></div><span class="bar-pct">87%</span></div>
+			<div class="skill-row"><span class="skill-name">ETL / ELT</span><div class="bar-track"><div class="bar-fill" style="background:#1D9E75" data-w="85"></div></div><span class="bar-pct">85%</span></div>
 			<div class="grp-label">Analytics & visualisation</div>
-			<div class="skill-row"><span class="skill-name">Power BI</span><div class="bar-track"><div class="bar-fill" style="background:#F0997B" data-w="82"></div></div><span class="bar-pct">82%</span></div>
-			<div class="skill-row"><span class="skill-name">Tableau</span><div class="bar-track"><div class="bar-fill" style="background:#F0997B" data-w="78"></div></div><span class="bar-pct">78%</span></div>
+			<div class="skill-row"><span class="skill-name">Power BI</span><div class="bar-track"><div class="bar-fill" style="background:#378ADD" data-w="82"></div></div><span class="bar-pct">82%</span></div>
+			<div class="skill-row"><span class="skill-name">Tableau</span><div class="bar-track"><div class="bar-fill" style="background:#378ADD" data-w="78"></div></div><span class="bar-pct">78%</span></div>
 		</div>
 	</div>
 
@@ -425,7 +435,7 @@
 	<!-- What I bring section -->
 	<div style="max-width:900px;margin:2.5rem auto 0;text-align:left">
 		<div class="bring-headline">
-			I don't just analyse data —<br>I build systems that make <em>decisions automatic</em>.
+			I go beyond analysing data —<br>I build systems that make <em>decisions automatic</em>.
 		</div>
 		<p class="bring-tagline">
 			Most teams are drowning in data but starving for action. I sit at the intersection of
@@ -771,14 +781,14 @@ document.getElementById('year').textContent = new Date().getFullYear();
 	const c=document.getElementById('radarC'), ctx=c.getContext('2d');
 	const CX=90, CY=90, R=72;
 	const axes=['ML / LLMs','Data Eng.','Analytics','Automation','AI Systems'];
-	const scores=[90,87,80,92,88];
+	const scores=[95,87,80,92,92];
 	const N=axes.length;
 	const gridC='rgba(83,74,183,0.15)', lblC='#6b6490';
 	function pt(i,r){ const a=(2*Math.PI*i/N)-Math.PI/2; return[CX+r*Math.cos(a),CY+r*Math.sin(a)]; }
 	const leg=document.getElementById('radarLegend');
 	axes.forEach((a,i)=>{
 		const row=document.createElement('div'); row.className='rl-row';
-		row.innerHTML=`<span class="rl-dot" style="background:#534AB7"></span><span style="flex:1;color:#2e2660">${a}</span><span class="rl-val" style="color:#534AB7">${scores[i]}%</span>`;
+		row.innerHTML=`<span class="rl-dot" style="background:#534AB7"></span><span style="flex:1;color:#2e2660">${a}</span><span class="rl-val" style="color:#534AB7">${[95,87,80,92,92][i]}%</span>`;
 		leg.appendChild(row);
 	});
 	let prog=0;
@@ -824,11 +834,11 @@ document.getElementById('year').textContent = new Date().getFullYear();
 /* ══ FINGERPRINT ══ */
 (function(){
 	const segs=[
-		{label:'Data engineering',pct:32,color:'#EF9F27'},
-		{label:'ML / LLMs',pct:28,color:'#5DCAA5'},
-		{label:'Analytics',pct:20,color:'#F0997B'},
-		{label:'Languages',pct:13,color:'#AFA9EC'},
-		{label:'Tools & process',pct:7,color:'#888780'},
+		{label:'Data engineering',pct:30,color:'#1D9E75'},
+		{label:'ML / LLMs',pct:35,color:'#534AB7'},
+		{label:'Analytics',pct:18,color:'#378ADD'},
+		{label:'Languages',pct:12,color:'#5DCAA5'},
+		{label:'Tools & process',pct:5,color:'#888780'},
 	];
 	const track=document.getElementById('fpTrack'), leg=document.getElementById('fpLegend');
 	segs.forEach(s=>{
@@ -863,51 +873,43 @@ document.getElementById('year').textContent = new Date().getFullYear();
 	const AXES=['ML / LLMs','Data Eng.','Analytics','Automation','AI Systems'];
 	const projects=[
 		{tag:'ML / LLMs',tc:'ml',title:'FinSynGen — Synthetic Financial Time-Series Generator',sub:'LLM prompting + automated statistical validation',
-		 scores:[95,70,80,85,90],col:{fill:'rgba(175,169,236,0.18)',stroke:'#AFA9EC'},
-		 impacts:[{num:'100%',lbl:'Automated QA'},{num:'5×',lbl:'Faster generation'},{num:'3',lbl:'Stat checks'}],
-		 pills:['Python','OpenAI','Time series','SciPy'],link:'https://github.com/darren16449/-FinSynGen-Synthetic-Financial-Data-Generator'},
+		 scores:[98,70,80,85,94],col:{fill:'rgba(175,169,236,0.18)',stroke:'#AFA9EC'},
+		 impacts:[{num:'100%',lbl:'Automated QA'},{num:'5x',lbl:'Faster generation'},{num:'3',lbl:'Stat checks'}],
+		 pills:['Python','OpenAI','HuggingFace','SciPy'],link:'https://github.com/darren16449/-FinSynGen-Synthetic-Financial-Data-Generator'},
 		{tag:'RAG / AI',tc:'rag',title:'Marketing Content Assistant — LLM + RAG App',sub:'Retrieval-augmented generation for brand-consistent content',
-		 scores:[88,75,72,65,95],col:{fill:'rgba(93,202,165,0.18)',stroke:'#5DCAA5'},
+		 scores:[93,75,72,65,96],col:{fill:'rgba(93,202,165,0.18)',stroke:'#5DCAA5'},
 		 impacts:[{num:'~60%',lbl:'Less drift'},{num:'3',lbl:'Languages'},{num:'~1s',lbl:'Latency'}],
-		 pills:['OpenAI','ChromaDB','RAG','Streamlit'],link:'https://github.com/darren16449/Marketing-Content-Assistant'},
+		 pills:['OpenAI','HuggingFace','ChromaDB','RAG','Streamlit'],link:'https://github.com/darren16449/Marketing-Content-Assistant'},
 		{tag:'Automation',tc:'auto',title:'Automated Financial & Ops Reporting Pipelines',sub:'End-to-end pipeline replacing manual reporting',
-		 scores:[30,90,88,95,40],col:{fill:'rgba(239,159,39,0.18)',stroke:'#EF9F27'},
+		 scores:[98,92,88,97,95],col:{fill:'rgba(239,159,39,0.18)',stroke:'#EF9F27'},
 		 impacts:[{num:'40%',lbl:'Less effort'},{num:'30%',lbl:'Faster'},{num:'≈0',lbl:'Errors'}],
 		 pills:['Python','SQL','Excel','Power BI'],link:'assets/Darren_Dcunha_Resume.pdf'},
 	];
-	const N=AXES.length, SIZE=120, CX=SIZE, CY=SIZE, R=92;
-	function polar(i,r){const a=(2*Math.PI*i/N)-Math.PI/2;return[CX+r*Math.cos(a),CY+r*Math.sin(a)];}
-	function radarSVG(proj,animate){
-		const{scores,col}=proj; const vb=SIZE*2;
-		let s=`<svg width="${vb}" height="${vb}" viewBox="0 0 ${vb} ${vb}">`;
-		[.25,.5,.75,1].forEach(t=>{
-			const pts=Array.from({length:N},(_,i)=>polar(i,R*t).map(v=>v.toFixed(1)).join(',')).join(' ');
-			s+=`<polygon points="${pts}" fill="none" stroke="rgba(83,74,183,0.15)" stroke-width="0.5"/>`;
+	function strengthBars(proj, animate){
+		const labels = AXES;
+		const scores = proj.scores;
+		const col = proj.col.stroke;
+		let html = `<div class="str-bars" data-color="${col}">`;
+		labels.forEach((lbl,i)=>{
+			const pct = scores[i];
+			html += `<div class="str-row">
+				<span class="str-lbl">${lbl}</span>
+				<div class="str-track">
+					<div class="str-fill" style="background:${col};width:${animate?0:pct}%;transition:width 1s cubic-bezier(.4,0,.2,1) ${i*0.1}s" data-w="${pct}"></div>
+				</div>
+				<span class="str-val">${pct}</span>
+			</div>`;
 		});
-		for(let i=0;i<N;i++){const[x,y]=polar(i,R);s+=`<line x1="${CX}" y1="${CY}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="rgba(83,74,183,0.15)" stroke-width="0.5"/>`;}
-		for(let i=0;i<N;i++){
-			const[lx,ly]=polar(i,R+14);
-			const anchor=lx<CX-4?'end':lx>CX+4?'start':'middle';
-			s+=`<text x="${lx.toFixed(1)}" y="${(ly+3).toFixed(1)}" text-anchor="${anchor}" font-size="8" fill="#6b6490" font-family="sans-serif">${AXES[i]}</text>`;
-		}
-		const zp=scores.map((_,i)=>{const[x,y]=polar(i,0);return`${i===0?'M':'L'}${x.toFixed(1)},${y.toFixed(1)}`;}).join(' ')+'Z';
-		const fp=scores.map((sc,i)=>{const[x,y]=polar(i,R*(sc/100));return`${i===0?'M':'L'}${x.toFixed(1)},${y.toFixed(1)}`;}).join(' ')+'Z';
-		if(animate){
-			s+=`<path d="${zp}" fill="${col.fill}" stroke="${col.stroke}" stroke-width="1.5" stroke-linejoin="round"><animate attributeName="d" from="${zp}" to="${fp}" dur="0.9s" fill="freeze"/></path>`;
-			scores.forEach((sc,i)=>{const[x,y]=polar(i,R*(sc/100));s+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3" fill="${col.stroke}" opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="0.85s" fill="freeze"/></circle>`;});
-		} else {
-			s+=`<path d="${fp}" fill="${col.fill}" stroke="${col.stroke}" stroke-width="1.5" stroke-linejoin="round"/>`;
-			scores.forEach((sc,i)=>{const[x,y]=polar(i,R*(sc/100));s+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3" fill="${col.stroke}"/>`;});
-		}
-		return s+'</svg>';
+		html += '</div>';
+		return html;
 	}
-	function buildCard(proj){
-		const div=document.createElement('div'); div.className='proj-card'; div.dataset.id=proj.tag;
+	function buildCard(proj, idx){
+		const div=document.createElement('div'); div.className='proj-card'; div.dataset.id=idx;
 		div.innerHTML=`
 			<span class="p-tag ${proj.tc}">${proj.tag}</span>
 			<div class="p-title">${proj.title}</div>
 			<div class="p-sub">${proj.sub}</div>
-			<div class="p-radar-wrap">${radarSVG(proj,false)}</div>
+			<div class="p-radar-wrap">${strengthBars(proj,false)}</div>
 			<div class="p-impacts">${proj.impacts.map(im=>`<div class="p-imp"><div class="p-imp-num">${im.num}</div><div class="p-imp-lbl">${im.lbl}</div></div>`).join('')}</div>
 			<div class="p-pills">${proj.pills.map(p=>`<span class="p-pill">${p}</span>`).join('')}</div>
 			<a class="p-gh" href="${proj.link}" target="_blank" rel="noreferrer">View on GitHub →</a>`;
@@ -919,12 +921,13 @@ document.getElementById('year').textContent = new Date().getFullYear();
 		entries.forEach(e=>{
 			if(e.isIntersecting&&!observed.has(e.target.dataset.id)){
 				observed.add(e.target.dataset.id);
-				const proj=projects.find(p=>p.tag===e.target.dataset.id);
-				if(proj) e.target.querySelector('.p-radar-wrap').innerHTML=radarSVG(proj,true);
+				e.target.querySelectorAll('.str-fill').forEach(f=>{
+					setTimeout(()=>f.style.width=f.dataset.w+'%', 100);
+				});
 			}
 		});
 	},{threshold:.3});
-	projects.forEach(p=>{const card=buildCard(p);grid.appendChild(card);io.observe(card);});
+	projects.forEach((p,i)=>{const card=buildCard(p,i);grid.appendChild(card);io.observe(card);});
 })();
 
 /* ══ TIMELINE STAGGER ══ */
@@ -1010,7 +1013,7 @@ const QA=[
 	},
 	{
 		keys:['skill','tech stack','language','tool','python','sql','what can you do','technical'],
-		ans:"My core stack is Python and SQL — that's where I live. On top of that: LLMs and RAG pipelines, ChromaDB, OpenAI API, ETL/ELT design, data modeling and ERD, Power BI, Tableau, Streamlit, and Git. I'm strongest at the intersection of data engineering and AI — building pipelines that actually make ML systems work in production."
+		ans:"My core stack is Python and SQL. On top of that: LLMs and RAG pipelines, HuggingFace models for custom code generation and fine-tuning, ChromaDB, OpenAI API, ETL/ELT design, data modeling and ERD, Power BI, Tableau, Streamlit, and Git. I'm strongest at the intersection of data engineering and AI — building pipelines that make ML systems work in production, not just in notebooks."
 	},
 	{
 		keys:['build','create','make','future','dream','want to build','platform','creative','habit','behavioural'],
@@ -1034,7 +1037,7 @@ const QA=[
 	},
 	{
 		keys:['contact','reach','email','linkedin','github','connect','hire','talk'],
-		ans:"Best way to reach me is darrenandrew01@gmail.com — or connect on LinkedIn at linkedin.com/in/darrenandrewdcunha. I'm open to full-time roles and internships in Data Science, ML Engineering, Data Analytics, and Data Engineering. Always happy to talk."
+		ans:"Best way to reach me is darrenandrew01@gmail.com — or connect on LinkedIn at linkedin.com/in/darrenandrewdcunha. I'm based in Baltimore, MD but open to relocation. Open to full-time roles and internships in Data Science, ML Engineering, Data Analytics, and Data Engineering. Always happy to talk."
 	},
 ];
 
